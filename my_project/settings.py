@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get("project4_momentum_bikeservice_2024")
 #'django-insecure-8mmma^5rka%#i52*b0p+wnfm=o+vpm@^8x@e565mtmhj29h&ic'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-raypt808-momentumbicycl-0t2x1lvfenc.ws-eu116.gitpod.io', '.herokuapp.com']
 
