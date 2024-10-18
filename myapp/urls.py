@@ -1,3 +1,33 @@
+from django.urls import path
+from . import views  # Import views from the current app
+from .views import register, book_appointment, appointment_list, home, profile 
+
+urlpatterns = [
+    path('', home, name='home'), 
+    path('register/', register, name='register'),
+    path('book/', views.book_appointment, name='book_appointment'),
+    path('appointments/', views.appointment_list, name='appointment_list'),
+    path('accounts/profile/', profile, name='profile'), 
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
 URL configuration for my_project project.
 
@@ -14,9 +44,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+"""from django.contrib import admin
 from django.urls import path, include
-from hello_world import views as index_views
+from workshop import views as index_views
 from about import views as about_views
 
 urlpatterns = [
@@ -24,3 +54,4 @@ urlpatterns = [
     path('about/', about_views.about_me, name='about'),
     path('admin/', admin.site.urls),
 ]
+"""
