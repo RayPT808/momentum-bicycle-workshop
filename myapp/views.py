@@ -10,6 +10,9 @@ from .forms import UserRegistrationForm
 def home(request):
     return render(request, 'home.html')
 
+def about(request):
+    return render(request, 'about.html') 
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)

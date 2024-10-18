@@ -3,7 +3,8 @@ from . import views  # Import views from the current app
 from .views import register, book_appointment, appointment_list, home, profile 
 
 urlpatterns = [
-    path('', home, name='home'), 
+    path('', home, name='home'),
+     path('about/', views.about, name='about'), 
     path('register/', register, name='register'),
     path('book/', views.book_appointment, name='book_appointment'),
     path('appointments/', views.appointment_list, name='appointment_list'),
