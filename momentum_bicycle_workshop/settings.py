@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'repotestdjango.urls'
+ROOT_URLCONF = 'momentum_bicycle_workshop.urls'  
 
 TEMPLATES = [
     {
@@ -75,7 +75,8 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'repotestdjango.wsgi.application'
+WSGI_APPLICATION = 'momentum_bicycle_workshop.wsgi.application'
+
 
 
 # Database
