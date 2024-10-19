@@ -1,5 +1,4 @@
 from django import forms
-from .models import Appointment
 from django.contrib.auth.models import User
 
 class UserRegistrationForm(forms.ModelForm):
@@ -17,6 +16,14 @@ class UserRegistrationForm(forms.ModelForm):
 
         if password and password_confirm and password != password_confirm:
             raise forms.ValidationError("Passwords do not match.")
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])  # This hashes the password
+        if commit:
+            user.save()
+        return user
+
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
