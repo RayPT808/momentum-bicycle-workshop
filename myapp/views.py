@@ -1,11 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Appointment
-from .forms import AppointmentForm
+from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.models import User
-from .forms import UserRegistrationForm
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -29,7 +25,7 @@ def home(request):
     return render(request, 'home.html')
 
 def about(request):
-    return render(request, 'about.html') 
+    return render(request, 'about.html')
 
 def register(request):
     # Redirect logged-in users to home (or another view) if they try to access the registration page

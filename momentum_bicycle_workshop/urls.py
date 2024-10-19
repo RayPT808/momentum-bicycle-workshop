@@ -1,10 +1,10 @@
-from django.contrib import admin
 from django.urls import path, include  # Ensure 'include' is imported
-from . import views
+from myapp import views
 
 urlpatterns = [
-    path('', include('myapp.urls')), 
-    path('admin/', admin.site.urls),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('register/', views.register, name='register'),    # Include authentication URLs
+    path('', views.home, name='home'),
+    path('about/', about, name='about'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
+    # Add other paths as needed
 ]
