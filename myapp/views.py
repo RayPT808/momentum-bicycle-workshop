@@ -4,6 +4,8 @@ from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 
 def login_view(request):
@@ -66,3 +68,7 @@ def book_appointment(request):
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user)
     return render(request, 'appointment_list.html', {'appointments': appointments})
+
+def logout_view(request):
+    logout(request)  # Log the user out
+    return redirect('home')  # Redirect to home page or wherever you want

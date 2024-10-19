@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, about, register, login_view
+from .views import home, about, register, login_view, logout_view
 from . import views  # Import views from the current app
 from django.contrib.auth import views as auth_views
 
@@ -8,6 +8,7 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('register/', register, name='register'),
     path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'), 
     path('profile/', views.profile, name='profile'),
     path('book_appointment/', views.book_appointment, name='book_appointment'),
     path('appointment_list/', views.appointment_list, name='appointment_list'),
