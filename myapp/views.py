@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.contrib.auth import login
+from .forms import UserRegistrationForm
+
 
 
 def login_view(request):
@@ -30,21 +33,16 @@ def about(request):
     return render(request, 'about.html')
 
 def register(request):
-    # Redirect logged-in users to home (or another view) if they try to access the registration page
-    if request.user.is_authenticated:
-        return redirect('home')  # Or redirect to 'profile', 'dashboard', etc.
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password'])
-            user.save()
-            login(request, user)  # Log the user in after registration
-            return redirect('home')  # Redirect to a success page or home
+            user = form.save()
+            login(request, user)  # Log the user in after successful registration
+            return redirect('home')  # Redirect to the home page or any other page
     else:
         form = UserRegistrationForm()
-    
     return render(request, 'registration/register.html', {'form': form})
+
 
 @login_required
 def profile(request):
