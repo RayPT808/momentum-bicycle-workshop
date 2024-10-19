@@ -1,15 +1,31 @@
 from django.urls import path
 from . import views  # Import views from the current app
-from .views import register, book_appointment, appointment_list, home, profile 
+from .views import register, book_appointment, appointment_list, home, profile
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', home, name='home'),
-     path('about/', views.about, name='about'), 
-    path('register/', register, name='register'),
-    path('book/', views.book_appointment, name='book_appointment'),
-    path('appointments/', views.appointment_list, name='appointment_list'),
-    path('accounts/profile/', profile, name='profile'), 
+    path('', views.home, name='home'),
+    path('about/', views.about, name='about'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),  # Adjust as per your login view
 ]
+
+
+
+
+
+
+
+
+#urlpatterns = [
+#    path('', home, name='home'),
+#    path('about/', views.about, name='about'), 
+#    path('register/', views.register, name='register'),
+#    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
+#    path('book/', views.book_appointment, name='book_appointment'),
+#    path('appointments/', views.appointment_list, name='appointment_list'),
+#    path('accounts/profile/', profile, name='profile'), 
+#]
 
 
 

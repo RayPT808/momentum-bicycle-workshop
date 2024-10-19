@@ -6,8 +6,8 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="post">
+    <h2>Login</h2>
+    <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}  <!-- Render the form fields -->
         <button type="submit">Login</button>
