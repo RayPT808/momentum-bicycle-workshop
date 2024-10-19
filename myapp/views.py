@@ -65,7 +65,28 @@ def book_appointment(request):
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user)
-    return render(request, 'appointment_list.html', {'appointments': appointments})
+    return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
+
+@login_required
+def booking_view(request):
+    if request.method == 'POST':
+        date = request.POST.get('appointment_date')
+        time = request.POST.get('appointment_time')
+        notes = request.POST.get('notes')
+
+        # Create a new Appointment object
+        appointment = Appointment(
+            user=request.user,
+            date=date,
+            time=time,
+            notes=notes
+        )
+        appointment.save()
+
+        # Redirect to a success page or back to the booking page
+        return redirect('booking_success')  # Create this URL pattern
+
+    return render(request, 'myapp/booking.html')  # Adjust this path as necessary
 
 def logout_view(request):
     logout(request)  # Log the user out

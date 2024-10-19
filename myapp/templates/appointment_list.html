@@ -1,8 +1,26 @@
-<h2>Your Appointments</h2>
-<ul>
-    {% for appointment in appointments %}
-        <li>{{ appointment.date }} at {{ appointment.time }} - {{ appointment.description }}</li>
-    {% empty %}
-        <li>No appointments found.</li>
-    {% endfor %}
-</ul>
+<!-- appointment_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Appointments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    {% include 'myapp/navbar.html' %}
+    <div class="container mt-5">
+        <h2>Your Appointments</h2>
+        <ul class="list-group">
+            {% for appointment in appointments %}
+                <li class="list-group-item">
+                    {{ appointment.date }} at {{ appointment.time }} - {{ appointment.description }}
+                </li>
+            {% empty %}
+                <li class="list-group-item">No appointments booked.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

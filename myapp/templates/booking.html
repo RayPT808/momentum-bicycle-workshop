@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Optional: Add a link to a calendar library (e.g., FullCalendar) if needed -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+</head>
+<body>
+    <!-- Navigation Bar -->
+    {% include 'myapp/navbar.html' %}
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Book an Appointment</h2>
+
+        <!-- Booking Form -->
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="appointment_date">Appointment Date:</label>
+                <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+                <div class="invalid-feedback">
+                    Please select a date.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="appointment_time">Appointment Time:</label>
+                <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
+                <div class="invalid-feedback">
+                    Please select a time.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes">Additional Notes:</label>
+                <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Book Appointment</button>
+        </form>
+
+        <!-- Optional: Calendar Display -->
+        <h3 class="mt-5">Available Appointments</h3>
+        <div id="calendar"></div>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Optional: Add FullCalendar JS if using -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                // Configure the calendar options here
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                // Add events here
+                events: '/path/to/your/events/', // URL for events data
+            });
+        });
+    </script>
+</body>
+</html>

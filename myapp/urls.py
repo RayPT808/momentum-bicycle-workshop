@@ -3,6 +3,9 @@ from .views import home, about, register, login_view
 from django.contrib.auth.views import LogoutView
 from . import views  # Import views from the current app
 from django.contrib.auth import views as auth_views
+from .views import book_appointment
+from .views import booking_view
+
 
 urlpatterns = [
     path('', home, name='home'),
@@ -11,7 +14,8 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
     path('profile/', views.profile, name='profile'),
-    path('book_appointment/', views.book_appointment, name='book_appointment'),
+    path('book/', booking_view, name='book_appointment'),
+    path('book_appointment/', book_appointment, name='book_appointment'),
     path('appointment_list/', views.appointment_list, name='appointment_list'),
 ]
 
