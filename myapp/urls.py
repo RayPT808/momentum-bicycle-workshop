@@ -4,10 +4,10 @@ from . import views  # Import views from the current app
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', home, name='home'),
     path('about/', about, name='about'),
-    path('register/', views.register, name='register'),
-    path('login/', views.login_view, name='login'),
+    path('register/', register, name='register'),
+    path('login/', login_view, name='login'),
     path('profile/', views.profile, name='profile'),
     path('book_appointment/', views.book_appointment, name='book_appointment'),
     path('appointment_list/', views.appointment_list, name='appointment_list'),
