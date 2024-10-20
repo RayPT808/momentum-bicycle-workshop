@@ -8,6 +8,7 @@ class Appointment(models.Model):
     time = models.TimeField()
     created_at = models.DateTimeField(default=timezone.now)
     description = models.TextField()
+    photo = models.ImageField(upload_to='booking_photos/', blank=True, null=True)
 
     def __str__(self):
         return f"Appointment with {self.user.username} on {self.date} at {self.time}"

@@ -5,6 +5,8 @@ from . import views  # Import views from the current app
 from django.contrib.auth import views as auth_views
 from .views import book_appointment
 from .views import booking_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -17,7 +19,7 @@ urlpatterns = [
     path('book/', booking_view, name='book_appointment'),
     path('book_appointment/', book_appointment, name='book_appointment'),
     path('appointment_list/', views.appointment_list, name='appointment_list'),
-]
+]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

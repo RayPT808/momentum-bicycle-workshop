@@ -51,7 +51,7 @@ def profile(request):
 @login_required
 def book_appointment(request):
     if request.method == 'POST':
-        form = AppointmentForm(request.POST)
+        form = AppointmentForm(request.POST, request.FILES)
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.user = request.user

@@ -20,11 +20,22 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class AppointmentForm(forms.ModelForm):
+    # Add the ImageField here for file upload
+    photo = forms.ImageField(required=False)
+
     class Meta:
         model = Appointment
-        fields = ['date', 'time', 'description']
+        fields = ['date', 'time', 'description', 'photo']  # Include 'photo' in the fields list
+
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}),
-            'time': forms.TimeInput(attrs={'type': 'time'}),
-            'description': forms.Textarea(attrs={'rows': 4}),
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
         }
+
+    def __init__(self, *args, **kwargs):
+        super(AppointmentForm, self).__init__(*args, **kwargs)
+        self.fields['date'].widget.attrs.update({'class': 'form-control'})
+        self.fields['time'].widget.attrs.update({'class': 'form-control'})
+        self.fields['description'].widget.attrs.update({'class': 'form-control'})
+        self.fields['photo'].widget.attrs.update({'class': 'form-control'})  # Style the photo field as well

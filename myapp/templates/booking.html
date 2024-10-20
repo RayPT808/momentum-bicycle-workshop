@@ -16,30 +16,28 @@
     <div class="container mt-5">
         <h2 class="text-center mb-4">Book an Appointment</h2>
 
-        <!-- Booking Form -->
-        <form method="post" class="needs-validation" novalidate>
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="appointment_date">Appointment Date:</label>
-                <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
-                <div class="invalid-feedback">
-                    Please select a date.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="appointment_time">Appointment Time:</label>
-                <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
-                <div class="invalid-feedback">
-                    Please select a time.
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="notes">Additional Notes:</label>
-                <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Book Appointment</button>
-        </form>
-
+       <!-- Booking Form -->
+       <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.description.label }} 
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            {{ form.date.label }} 
+            {{ form.date }}
+        </div>
+        <div class="form-group">
+            {{ form.time.label }} 
+            {{ form.time }}
+        </div>
+        <div class="form-group">
+            {{ form.photo.label }} 
+            {{ form.photo }}  <!-- This is where the user will attach a photo -->
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    
         <!-- Optional: Calendar Display -->
         <h3 class="mt-5">Available Appointments</h3>
         <div id="calendar"></div>
