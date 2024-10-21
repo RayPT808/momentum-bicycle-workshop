@@ -1,12 +1,11 @@
 from django.urls import path
-from .views import home, about, register, login_view 
+from .views import home, about, register, login_view
 from django.contrib.auth.views import LogoutView
 from . import views  # Import views from the current app
-from django.contrib.auth import views as auth_views
-from .views import book_appointment
-from .views import booking_view
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import book_appointment
+from .views import appointment_list
 
 
 urlpatterns = [
@@ -16,11 +15,9 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
     path('profile/', views.profile, name='profile'),
-    path('book/', booking_view, name='book_appointment'),
-    path('book_appointment/', book_appointment, name='book_appointment'),
+    path('book/',views.book_appointment, name='book_appointment'),
     path('appointment_list/', views.appointment_list, name='appointment_list'),
-]   + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 

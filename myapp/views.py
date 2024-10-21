@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from django.contrib import messages
+from django.utils import timezone
 
 
 
@@ -49,15 +50,16 @@ def register(request):
 def profile(request):
     return render(request, 'profile.html')
 
+
 @login_required
 def book_appointment(request):
-    # Check if the user already has an appointment
-    existing_appointment = Appointment.objects.filter(user=request.user).first()
+    # Check if the user has any future appointment
+    existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
 
     if existing_appointment:
-        # If the user already has an appointment, display a message and redirect
-        messages.error(request, "You already have an appointment.")
-        return redirect('appointment_list')  # Redirect to the appointment list page
+        # If the user has a future appointment, show an error message and redirect
+        messages.error(request, "You already have a future appointment. You cannot book more than one appointment.")
+        return redirect('appointment_list')  # Redirect to the user's appointment list page
 
     if request.method == 'POST':
         form = AppointmentForm(request.POST, request.FILES)
@@ -68,41 +70,17 @@ def book_appointment(request):
             appointment.user = request.user
             appointment.save()
             messages.success(request, "Your appointment has been booked successfully.")
-            return redirect('appointment_list')
+            return redirect('appointment_list')  # Redirect after successful booking
     else:
         form = AppointmentForm()
 
-    return render(request, 'book_appointment.html', {'form': form})
+    return render(request, 'myapp/book_appointment.html', {'form': form})
+
 
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user)
     return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
-
-@login_required
-def booking_view(request):
-    # Check if the user already has an appointment
-    existing_appointment = Appointment.objects.filter(user=request.user).first()
-
-    if existing_appointment:
-        # If the user already has an appointment, display a message and redirect
-        messages.error(request, "You already have an appointment.")
-        return redirect('appointment_list')  # Redirect to the appointment list page
-
-    if request.method == 'POST':
-        form = AppointmentForm(request.POST, request.FILES)
-        if form.is_valid():
-            # Save the form but don't commit yet
-            appointment = form.save(commit=False)
-            # Assign the current user to the appointment
-            appointment.user = request.user
-            appointment.save()
-            messages.success(request, "Your appointment has been booked successfully.")
-            return redirect('appointment_list')
-    else:
-        form = AppointmentForm()
-
-    return render(request, 'myapp/booking.html', {'form': form})
 
 
 
