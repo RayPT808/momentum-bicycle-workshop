@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth import login
 from .forms import UserRegistrationForm
+from django.contrib import messages
 
 
 
@@ -50,16 +51,27 @@ def profile(request):
 
 @login_required
 def book_appointment(request):
+    # Check if the user already has an appointment
+    existing_appointment = Appointment.objects.filter(user=request.user).first()
+
+    if existing_appointment:
+        # If the user already has an appointment, display a message and redirect
+        messages.error(request, "You already have an appointment.")
+        return redirect('appointment_list')  # Redirect to the appointment list page
+
     if request.method == 'POST':
         form = AppointmentForm(request.POST, request.FILES)
         if form.is_valid():
+            # Save the form but don't commit yet
             appointment = form.save(commit=False)
+            # Assign the current user to the appointment
             appointment.user = request.user
             appointment.save()
+            messages.success(request, "Your appointment has been booked successfully.")
             return redirect('appointment_list')
     else:
         form = AppointmentForm()
-    
+
     return render(request, 'book_appointment.html', {'form': form})
 
 @login_required
@@ -69,24 +81,30 @@ def appointment_list(request):
 
 @login_required
 def booking_view(request):
+    # Check if the user already has an appointment
+    existing_appointment = Appointment.objects.filter(user=request.user).first()
+
+    if existing_appointment:
+        # If the user already has an appointment, display a message and redirect
+        messages.error(request, "You already have an appointment.")
+        return redirect('appointment_list')  # Redirect to the appointment list page
+
     if request.method == 'POST':
-        date = request.POST.get('appointment_date')
-        time = request.POST.get('appointment_time')
-        notes = request.POST.get('notes')
+        form = AppointmentForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Save the form but don't commit yet
+            appointment = form.save(commit=False)
+            # Assign the current user to the appointment
+            appointment.user = request.user
+            appointment.save()
+            messages.success(request, "Your appointment has been booked successfully.")
+            return redirect('appointment_list')
+    else:
+        form = AppointmentForm()
 
-        # Create a new Appointment object
-        appointment = Appointment(
-            user=request.user,
-            date=date,
-            time=time,
-            notes=notes
-        )
-        appointment.save()
+    return render(request, 'myapp/booking.html', {'form': form})
 
-        # Redirect to a success page or back to the booking page
-        return redirect('booking_success')  # Create this URL pattern
 
-    return render(request, 'myapp/booking.html')  # Adjust this path as necessary
 
 def logout_view(request):
     logout(request)  # Log the user out

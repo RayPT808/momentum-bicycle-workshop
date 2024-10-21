@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +10,49 @@
     <!-- Optional: Add a link to a calendar library (e.g., FullCalendar) if needed -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
 </head>
+
 <body>
+
     <!-- Navigation Bar -->
     {% include 'myapp/navbar.html' %}
 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Book an Appointment</h2>
 
-       <!-- Booking Form -->
-       <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="form-group">
-            {{ form.description.label }} 
-            {{ form.description }}
-        </div>
-        <div class="form-group">
-            {{ form.date.label }} 
-            {{ form.date }}
-        </div>
-        <div class="form-group">
-            {{ form.time.label }} 
-            {{ form.time }}
-        </div>
-        <div class="form-group">
-            {{ form.photo.label }} 
-            {{ form.photo }}  <!-- This is where the user will attach a photo -->
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    
+        <!-- Display messages -->
+        {% if messages %}
+            <div class="alert alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endif %}
+
+        <!-- Booking Form -->
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.description.label }}
+                {{ form.description }}
+            </div>
+            <div class="form-group">
+                {{ form.date.label }}
+                {{ form.date }}
+            </div>
+            <div class="form-group">
+                {{ form.time.label }}
+                {{ form.time }}
+            </div>
+            <div class="form-group">
+                {{ form.photo.label }}
+                {{ form.photo }} <!-- This is where the user will attach a photo -->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
         <!-- Optional: Calendar Display -->
         <h3 class="mt-5">Available Appointments</h3>
         <div id="calendar"></div>
@@ -50,7 +65,7 @@
     <!-- Optional: Add FullCalendar JS if using -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#calendar').fullCalendar({
                 // Configure the calendar options here
                 header: {
@@ -64,4 +79,5 @@
         });
     </script>
 </body>
+
 </html>
