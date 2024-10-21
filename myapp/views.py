@@ -10,6 +10,7 @@ from django.contrib.auth import login
 from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.utils import timezone
+from django.shortcuts import get_object_or_404
 
 
 
@@ -81,6 +82,33 @@ def book_appointment(request):
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user)
     return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
+
+@login_required
+def cancel_appointment(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id, user=request.user)
+    
+    if request.method == "POST":
+        appointment.delete()  # Delete the appointment
+        messages.success(request, "Your appointment has been canceled.")
+        return redirect('appointment_list')  # Redirect to appointment list
+    
+    return render(request, 'myapp/cancel_appointment.html', {'appointment': appointment})
+
+@login_required
+def modify_appointment(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id, user=request.user)
+    
+    if request.method == "POST":
+        form = AppointmentForm(request.POST, request.FILES, instance=appointment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your appointment has been updated successfully.")
+            return redirect('appointment_list')
+    else:
+        form = AppointmentForm(instance=appointment)
+
+    return render(request, 'myapp/modify_appointment.html', {'form': form, 'appointment': appointment})
+
 
 
 

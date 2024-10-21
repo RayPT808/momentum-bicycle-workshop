@@ -36,6 +36,20 @@
             {% endfor %}
         </ul>
     </div>
+    <ul class="list-group">
+        {% for appointment in appointments %}
+            <li class="list-group-item">
+                {{ appointment.date }} at {{ appointment.time }} - {{ appointment.description }}
+                <!-- Cancel button -->
+                <a href="{% url 'cancel_appointment' appointment.id %}" class="btn btn-danger btn-sm float-right ml-2">Cancel</a>
+                <!-- Modify button -->
+                <a href="{% url 'modify_appointment' appointment.id %}" class="btn btn-warning btn-sm float-right">Modify</a>
+            </li>
+        {% empty %}
+            <li class="list-group-item">No appointments booked.</li>
+        {% endfor %}
+    </ul>
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
