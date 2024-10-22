@@ -1,43 +1,65 @@
-<!-- book_appointment.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- FullCalendar CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Navigation Bar -->
     {% include 'myapp/navbar.html' %}
-    
+
     <div class="container mt-5">
         <h2>Book Appointment</h2>
 
-        <!-- Error/Success Message Display -->
+        <!-- Display error/success messages -->
         {% if messages %}
-            <div class="alert alert-dismissible fade show" role="alert">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="alert alert-info">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
         {% endif %}
 
-        <!-- Booking Form -->
-        <form method="post">
+        <!-- FullCalendar Container -->
+        <div id="calendar"></div>
+
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.as_p }}
             </div>
+
+            <!-- Hidden input to store the selected date from FullCalendar -->
+            <input type="hidden" id="id_date" name="date">
+
             <button type="submit" class="btn btn-primary">Book Appointment</button>
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- FullCalendar JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',  // You can change this to 'dayGridWeek' or others
+                selectable: true,             // Allows selecting a date
+                dateClick: function (info) {
+                    // When a date is clicked, set the value of the hidden input
+                    document.getElementById('id_date').value = info.dateStr;
+                },
+                events: '/api/events/'  // Point this to the actual URL returning your events
+            });
+            calendar.render();
+        });
+    </script>
 </body>
+
 </html>

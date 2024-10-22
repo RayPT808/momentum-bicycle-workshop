@@ -19,6 +19,7 @@ urlpatterns = [
     path('appointment_list/', views.appointment_list, name='appointment_list'),
     path('appointment/cancel/<int:appointment_id>/', views.cancel_appointment, name='cancel_appointment'),
     path('appointment/modify/<int:appointment_id>/', views.modify_appointment, name='modify_appointment'),
+    path('api/events/', views.appointment_events, name='appointment_events'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 

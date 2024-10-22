@@ -11,6 +11,8 @@ from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
+from datetime import datetime
+from django.http import JsonResponse
 
 
 
@@ -51,7 +53,6 @@ def register(request):
 def profile(request):
     return render(request, 'profile.html')
 
-
 @login_required
 def book_appointment(request):
     # Check if the user has any future appointment
@@ -62,26 +63,25 @@ def book_appointment(request):
         messages.error(request, "You already have a future appointment. You cannot book more than one appointment.")
         return redirect('appointment_list')  # Redirect to the user's appointment list page
 
+    form = AppointmentForm()  # Initialize the form for GET request
+
     if request.method == 'POST':
         form = AppointmentForm(request.POST, request.FILES)
         if form.is_valid():
-            # Save the form but don't commit yet
             appointment = form.save(commit=False)
-            # Assign the current user to the appointment
-            appointment.user = request.user
+            appointment.user = request.user  # Assign the current user
             appointment.save()
             messages.success(request, "Your appointment has been booked successfully.")
             return redirect('appointment_list')  # Redirect after successful booking
-    else:
-        form = AppointmentForm()
 
     return render(request, 'myapp/book_appointment.html', {'form': form})
 
 
 @login_required
 def appointment_list(request):
-    appointments = Appointment.objects.filter(user=request.user)
+    appointments = Appointment.objects.filter(user=request.user).order_by('date', 'time')
     return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
+
 
 @login_required
 def cancel_appointment(request, appointment_id):
@@ -108,6 +108,24 @@ def modify_appointment(request, appointment_id):
         form = AppointmentForm(instance=appointment)
 
     return render(request, 'myapp/modify_appointment.html', {'form': form, 'appointment': appointment})
+
+
+@login_required
+def appointment_events(request):
+    # Fetch all future appointments for the current user
+    appointments = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date())
+    
+    # Prepare the data in the FullCalendar required format
+    events = []
+    for appointment in appointments:
+        events.append({
+            'title': appointment.description,
+            'start': appointment.date.isoformat(),  # FullCalendar expects ISO format
+            'end': appointment.date.isoformat(),    # You can add end date if needed
+            # Add other necessary fields if needed
+        })
+    
+    return JsonResponse(events, safe=False)
 
 
 
