@@ -1,0 +1,32 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/path/to/your/background.jpg'); /* Add your background image */
+            background-size: cover; /* Ensures the image covers the whole background */
+            background-attachment: fixed; /* Optional: Makes background fixed during scroll */
+        }
+    </style>
+</head>
+<body>
+    {% include 'myapp/navbar.html' %}  <!-- Navbar inclusion -->
+
+    <div class="container" style="margin-top: 70px;">
+        {% block content %}{% endblock %}  <!-- Content block where other templates will inject their content -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+   
+
