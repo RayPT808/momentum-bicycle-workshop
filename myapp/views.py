@@ -30,10 +30,10 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'myapp/home.html')
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'myapp/about.html')
 
 def register(request):
     if request.method == 'POST':

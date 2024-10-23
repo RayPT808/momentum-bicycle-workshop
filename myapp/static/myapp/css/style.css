@@ -5,3 +5,12 @@ body {
     background-repeat: no-repeat; /* Prevents the image from repeating */
     min-height: 100vh; /* Ensures the background covers the entire viewport height */
 }
+
+
+.about-page {
+    background-image: url("{% static 'myapp/images/about-background.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh; /* Adjust as necessary */
+    color: white; /* Optional: change text color for contrast */
+}
