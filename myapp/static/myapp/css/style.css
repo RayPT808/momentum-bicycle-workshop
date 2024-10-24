@@ -8,9 +8,12 @@ body {
 
 
 .about-page {
-    background-image: url("{% static 'myapp/images/about-background.jpg' %}");
+    background-image: url('../images/about-background.jpg'); /* Adjust path */
     background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    height: 100vh; /* Adjust as necessary */
-    color: white; /* Optional: change text color for contrast */
+    height: 100vh;
+    color: white;
+
 }
+

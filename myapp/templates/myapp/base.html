@@ -14,10 +14,13 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
+        .about-page {
+            background-image: url("{% static 'myapp/images/about-background.jpg' %}"); /* Change to your about background */
+        }
     </style>
 </head>
 
-<body>
+<body class="{% block body_class %}{% endblock %}"> <!-- Block for body class -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{% url 'home' %}">Momentum Bicycle Workshop</a>
