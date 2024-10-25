@@ -14,9 +14,11 @@ from pathlib import Path
 from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 #BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -29,8 +31,8 @@ SECRET_KEY = 'django-insecure-%l_r+7w*_*n$cl1)g@u2u5i%alizzb!m_zr@21$9!3-o_lr+jf
 DEBUG = False
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['momentum-bicycle-workshop.herokuapp.com']
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['momentum-bicycle-workshop.herokuapp.com', '127.0.0.1', 'localhost']
+
 
 
 
@@ -141,7 +143,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),  # For project-wide static files
     os.path.join(BASE_DIR, 'myapp/static'),  # Optional: include your app's static directory
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
