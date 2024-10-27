@@ -13,6 +13,8 @@ from django.utils import timezone
 from django.shortcuts import get_object_or_404
 from datetime import datetime
 from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 
 
@@ -126,6 +128,14 @@ def appointment_events(request):
         })
     
     return JsonResponse(events, safe=False)
+
+class OwnerDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'myapp/owner_dashboard.html'  # Create this template
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['appointments'] = Appointment.objects.all()  # Fetch all appointments
+        return context
 
 
 
