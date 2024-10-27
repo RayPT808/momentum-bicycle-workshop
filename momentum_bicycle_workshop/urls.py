@@ -3,7 +3,7 @@ from django.contrib import admin
 from myapp import views
 from django.conf import settings
 from django.conf.urls.static import static
-from myapp.views import OwnerDashboardView 
+from myapp.views import OwnerDashboardView, export_appointments, edit_appointment, delete_appointment
 
 
 urlpatterns = [
@@ -14,6 +14,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('', include('myapp.urls')),
     path('owner/dashboard/', OwnerDashboardView.as_view(), name='owner_dashboard'),
+    path('owner/export/', export_appointments, name='export_appointments'),
+    path('owner/edit/<int:id>/', edit_appointment, name='edit_appointment'),
+    path('owner/delete/<int:id>/', delete_appointment, name='delete_appointment'),
 
     # Add other paths as needed
 ]

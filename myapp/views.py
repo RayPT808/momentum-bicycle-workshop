@@ -1,22 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Appointment
 from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.contrib.auth import login
-from .forms import UserRegistrationForm
 from django.contrib import messages
 from django.utils import timezone
-from django.shortcuts import get_object_or_404
-from datetime import datetime
-from django.http import JsonResponse
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import JsonResponse, HttpResponse
 from django.views.generic import TemplateView
-
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+import csv
 
 def login_view(request):
     if request.method == 'POST':
@@ -27,7 +20,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Redirect to a success page
+                return redirect('home')
     else:
         form = AuthenticationForm()
     
@@ -44,12 +37,11 @@ def register(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Log the user in after successful registration
-            return redirect('home')  # Redirect to the home page or any other page
+            login(request, user)
+            return redirect('home')
     else:
         form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
-
 
 @login_required
 def profile(request):
@@ -57,44 +49,50 @@ def profile(request):
 
 @login_required
 def book_appointment(request):
-    # Check if the user has any future appointment
     existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
 
     if existing_appointment:
-        # If the user has a future appointment, show an error message and redirect
         messages.error(request, "You already have a future appointment. You cannot book more than one appointment.")
-        return redirect('appointment_list')  # Redirect to the user's appointment list page
+        return redirect('appointment_list')
 
-    form = AppointmentForm()  # Initialize the form for GET request
-
+    form = AppointmentForm()
     if request.method == 'POST':
         form = AppointmentForm(request.POST, request.FILES)
         if form.is_valid():
             appointment = form.save(commit=False)
-            appointment.user = request.user  # Assign the current user
+            appointment.user = request.user
             appointment.save()
             messages.success(request, "Your appointment has been booked successfully.")
-            return redirect('appointment_list')  # Redirect after successful booking
+            return redirect('appointment_list')
 
     return render(request, 'myapp/book_appointment.html', {'form': form})
-
 
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user).order_by('date', 'time')
     return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
 
-
 @login_required
 def cancel_appointment(request, appointment_id):
     appointment = get_object_or_404(Appointment, id=appointment_id, user=request.user)
     
     if request.method == "POST":
-        appointment.delete()  # Delete the appointment
+        appointment.delete()
         messages.success(request, "Your appointment has been canceled.")
-        return redirect('appointment_list')  # Redirect to appointment list
+        return redirect('appointment_list')
     
     return render(request, 'myapp/cancel_appointment.html', {'appointment': appointment})
+
+def edit_appointment(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST, instance=appointment)
+        if form.is_valid():
+            form.save()
+            return redirect('owner_dashboard')
+    else:
+        form = AppointmentForm(instance=appointment)
+    return render(request, 'myapp/edit_appointment.html', {'form': form, 'appointment': appointment})
 
 @login_required
 def modify_appointment(request, appointment_id):
@@ -113,33 +111,47 @@ def modify_appointment(request, appointment_id):
 
 
 @login_required
+def delete_appointment(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+    appointment.delete()
+    return redirect('appointment_list')  # Adjust this to your URL name for the appointment list.
+        
+
+@login_required
 def appointment_events(request):
-    # Fetch all future appointments for the current user
     appointments = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date())
-    
-    # Prepare the data in the FullCalendar required format
     events = []
     for appointment in appointments:
         events.append({
             'title': appointment.description,
-            'start': appointment.date.isoformat(),  # FullCalendar expects ISO format
-            'end': appointment.date.isoformat(),    # You can add end date if needed
-            # Add other necessary fields if needed
+            'start': appointment.date.isoformat(),
+            'end': appointment.date.isoformat(),
         })
     
     return JsonResponse(events, safe=False)
 
+def export_appointments(request):
+    appointments = Appointment.objects.all()
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="appointments.csv"'
+    writer = csv.writer(response)
+    writer.writerow(['Date', 'Notes'])
+    for appointment in appointments:
+        writer.writerow([appointment.date, appointment.notes])
+    return response
+
 class OwnerDashboardView(LoginRequiredMixin, TemplateView):
-    template_name = 'myapp/owner_dashboard.html'  # Create this template
+    def get(self, request):
+        appointments = Appointment.objects.all()
+        date_filter = request.GET.get('date')
+        if date_filter:
+            appointments = appointments.filter(date__date=date_filter)
+        search_query = request.GET.get('search')
+        if search_query:
+            appointments = appointments.filter(notes__icontains=search_query)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['appointments'] = Appointment.objects.all()  # Fetch all appointments
-        return context
-
-
-
+        return render(request, 'myapp/owner_dashboard.html', {'appointments': appointments})
 
 def logout_view(request):
-    logout(request)  # Log the user out
-    return redirect('home')  # Redirect to home page or wherever you want
+    logout(request)
+    return redirect('home')
