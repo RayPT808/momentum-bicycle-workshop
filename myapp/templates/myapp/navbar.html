@@ -4,17 +4,19 @@
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-            {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
-            {% endif %}
             
-            {% if user.is_superuser %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>
+            {% if user.is_authenticated %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                
+                {% if user.is_superuser %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>
+                {% endif %}
+                
+            {% else %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             {% endif %}
-
         </ul>
     </div>
 </nav>

@@ -39,7 +39,10 @@ ALLOWED_HOSTS = ['momentum-bicycle-workshop-22fb69372d3e.herokuapp.com', 'localh
 
 
 # repotestdjango/settings.py
-LOGIN_REDIRECT_URL = '/'  # Redirect to home after login
+#LOGIN_REDIRECT_URL = '/'  # Redirect to home after login
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
 
 
 

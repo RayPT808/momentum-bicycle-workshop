@@ -10,6 +10,11 @@ from django.http import JsonResponse, HttpResponse
 from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 import csv
+import logging
+
+
+
+logger = logging.getLogger(__name__)
 
 def login_view(request):
     if request.method == 'POST':
@@ -20,11 +25,12 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('home')  # Redirect to home page after successful login
     else:
         form = AuthenticationForm()
     
     return render(request, 'registration/login.html', {'form': form})
+
 
 def home(request):
     return render(request, 'myapp/home.html')
