@@ -55,6 +55,7 @@ def profile(request):
 
 @login_required
 def book_appointment(request):
+    # Check if the user already has a future appointment
     existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
 
     if existing_appointment:
@@ -62,15 +63,18 @@ def book_appointment(request):
         return redirect('appointment_list')
 
     form = AppointmentForm()
+    
+    # Handle POST request for booking an appointment
     if request.method == 'POST':
         form = AppointmentForm(request.POST, request.FILES)
         if form.is_valid():
             appointment = form.save(commit=False)
-            appointment.user = request.user
-            appointment.save()
+            appointment.user = request.user  # Associate the appointment with the logged-in user
+            appointment.save()  # Save the appointment
             messages.success(request, "Your appointment has been booked successfully.")
-            return redirect('appointment_list')
+            return redirect('appointment_list')  # Redirect to the list of appointments
 
+    # Render the booking form template
     return render(request, 'myapp/book_appointment.html', {'form': form})
 
 @login_required
@@ -127,11 +131,16 @@ def delete_appointment(request, appointment_id):
 def appointment_events(request):
     appointments = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date())
     events = []
+    
     for appointment in appointments:
+        # Combine the date and time into a single datetime object for start and end
+        start_datetime = timezone.make_aware(timezone.datetime.combine(appointment.date, appointment.time))
+        end_datetime = start_datetime + timezone.timedelta(hours=1)  # Assuming appointments are 1 hour long
+
         events.append({
             'title': appointment.description,
-            'start': appointment.date.isoformat(),
-            'end': appointment.date.isoformat(),
+            'start': start_datetime.isoformat(),  # Correctly format start
+            'end': end_datetime.isoformat(),      # Correctly format end
         })
     
     return JsonResponse(events, safe=False)

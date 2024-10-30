@@ -1,58 +1,55 @@
-{% load static %}
+<!-- book_appointment.html -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment</title>
-    
-    <!-- Updated Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-
-    <!-- FullCalendar CSS -->
-    <link href="{% static 'path/to/fullcalendar/main.min.css' %}" rel="stylesheet">
-    <!-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet"> -->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
 </head>
-
 <body>
-    <!-- Navigation Bar -->
-    {% include 'myapp/navbar.html' %}
 
     <div class="container mt-5">
-        <h2>Book Appointment</h2>
+        <h2 class="text-center mb-4">Book an Appointment</h2>
 
-        <!-- Display error/success messages -->
         {% if messages %}
-        <div class="alert alert-info">
-            {% for message in messages %}
-            <p>{{ message }}</p>
-            {% endfor %}
-        </div>
+            <div class="alert alert-dismissible fade show" role="alert">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         {% endif %}
-
-        <!-- FullCalendar Container -->
-        <div id="calendar"></div>
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.as_p }}
+                {{ form.description.label }}
+                {{ form.description }}
             </div>
-
-            <!-- Hidden input to store the selected date from FullCalendar -->
-            <input type="hidden" id="id_date" name="date">
-
-            <button type="submit" class="btn btn-primary">Book Appointment</button>
+            <div class="form-group">
+                {{ form.date.label }}
+                {{ form.date }}
+            </div>
+            <div class="form-group">
+                {{ form.time.label }}
+                {{ form.time }}
+            </div>
+            <div class="form-group">
+                {{ form.photo.label }}
+                {{ form.photo }} <!-- This is where the user will attach a photo -->
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
+        <h3 class="mt-5">Available Appointments</h3>
+        <div id="calendar"></div>
     </div>
 
-    <!-- FullCalendar JS -->
-
-    <script src="{% static 'path/to/fullcalendar/main.min.js' %}"></script>
-    <!-- script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script> -->
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.8/main.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
@@ -68,5 +65,4 @@
         });
     </script>
 </body>
-
 </html>
