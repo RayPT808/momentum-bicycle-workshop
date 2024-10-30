@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Updated Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
 
     <!-- FullCalendar CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
+    <link href="{% static 'path/to/fullcalendar/main.min.css' %}" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet"> -->
+
 </head>
 
 <body>
@@ -44,18 +49,20 @@
     </div>
 
     <!-- FullCalendar JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+
+    <script src="{% static 'path/to/fullcalendar/main.min.js' %}"></script>
+    <!-- script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script> -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',  // You can change this to 'dayGridWeek' or others
-                selectable: true,             // Allows selecting a date
+                initialView: 'dayGridMonth',
+                selectable: true,
                 dateClick: function (info) {
-                    // When a date is clicked, set the value of the hidden input
                     document.getElementById('id_date').value = info.dateStr;
                 },
-                events: '/api/events/'  // Point this to the actual URL returning your events
+                events: '/api/events/'
             });
             calendar.render();
         });
