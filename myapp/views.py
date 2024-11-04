@@ -60,7 +60,9 @@ from django.utils import timezone
 def book_appointment(request):
     # Define restricted days (0=Monday, 6=Sunday) and times (in 24-hour format)
     restricted_days = [5, 6]  # For example, 5=Saturday, 6=Sunday
-    restricted_times = [(18, 0), (20, 0)]  # Restrict appointments from 6 PM to 8 PM
+    # Define valid booking time range (8 AM to 6 PM)
+    valid_start_time = (8, 0)  # 8 AM
+    valid_end_time = (18, 0)   # 6 PM
 
     # Check if the user already has a future appointment
     existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
@@ -81,18 +83,21 @@ def book_appointment(request):
             # Check if the selected date is restricted
             appointment_day = appointment.date.weekday()  # Get the day of the week (0=Monday, 6=Sunday)
             appointment_time = (appointment.time.hour, appointment.time.minute)  # Get the time as a tuple
+
+            # Check if the appointment time is on the hour
+            if appointment.time.minute != 0:
+                messages.error(request, "You can only book appointments on the hour (e.g., 1:00, 2:00).")
+                return redirect('book_appointment')
             
             # Check if the appointment falls on a restricted day or within restricted times
             if appointment_day in restricted_days:
                 messages.error(request, "You cannot book appointments on weekends.")
                 return redirect('book_appointment')
 
-            # Check if appointment time is within restricted times
-            for start_time in restricted_times:
-                # Compare the start time (e.g., 18:00) with appointment time
-                if appointment_time >= start_time and appointment_time < (start_time[0] + 1, 0):  # Check if it's within the hour
-                    messages.error(request, "You cannot book appointments during restricted hours (6 PM to 8 PM).")
-                    return redirect('book_appointment')
+             # Check if appointment time is within valid hours
+            if not (valid_start_time <= appointment_time < valid_end_time):
+                messages.error(request, "You can only book appointments between 8 AM and 6 PM.")
+                return redirect('book_appointment')
 
             appointment.save()  # Save the appointment
             messages.success(request, "Your appointment has been booked successfully.")
@@ -135,16 +140,17 @@ def modify_appointment(request, appointment_id):
 
 
 @login_required
-def delete_appointment(request, appointment_id):
-    appointment = get_object_or_404(Appointment, id=appointment_id)
-    appointment.delete()
-    return redirect('appointment_list')  # Adjust this to your URL name for the appointment list.
-        
+def delete_appointment(request, id):
+    appointment = get_object_or_404(Appointment, id=id)
+    
+    if request.method == 'POST':
+        appointment.delete()
+        messages.success(request, 'Appointment deleted successfully.')
+        return redirect('appointment_list')
 
-def cancel_appointment(request, appointment_id):
-    appointment = get_object_or_404(Appointment, id=appointment_id)
-    appointment.delete()
-    return redirect('appointment_list')  #     
+    # If GET, you might want to redirect or raise an error.
+    return redirect('appointment_list')  # Or render a confirmation page.
+
 
 @login_required
 def appointment_events(request):

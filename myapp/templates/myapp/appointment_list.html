@@ -12,8 +12,6 @@
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-
-
 </head>
 
 <body>
@@ -36,42 +34,53 @@
         {% endif %}
 
         {% if appointments %}
-        <ul>
-            {% for appointment in appointments %}
-            <li>{{ appointment.date }} at {{ appointment.time }}: {{ appointment.description }}</li>
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p>No appointments found.</p>
-        {% endif %}
-
-
         <ul class="list-group">
             {% for appointment in appointments %}
             <li class="list-group-item">
                 {{ appointment.date }} at {{ appointment.time }} - {{ appointment.description }}
+
+                <!-- Modify button -->
+                <a href="{% url 'modify_appointment' appointment.id %}"
+                    class="btn btn-warning btn-sm float-right">Modify</a>
+                <!-- Delete button -->
+                <button type="button" class="btn btn-danger btn-sm float-right" data-toggle="modal"
+                    data-target="#deleteModal{{ appointment.id }}">
+                    Delete
+                </button>
+
+                <!-- Delete Confirmation Modal -->
+                <div class="modal fade" id="deleteModal{{ appointment.id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="deleteModalLabel{{ appointment.id }}" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel{{ appointment.id }}">Confirm Delete</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to delete this appointment?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                <form method="post" action="{% url 'delete_appointment' appointment.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </li>
             {% empty %}
             <li class="list-group-item">No appointments booked.</li>
             {% endfor %}
         </ul>
+        {% else %}
+        <p>No appointments found.</p>
+        {% endif %}
     </div>
-    <ul class="list-group">
-        {% for appointment in appointments %}
-        <li class="list-group-item">
-            {{ appointment.date }} at {{ appointment.time }} - {{ appointment.description }}
-            <!-- Cancel button -->
-            <a href="{% url 'cancel_appointment' appointment.id %}"
-                class="btn btn-danger btn-sm float-right ml-2">Cancel</a>
-            <!-- Modify button -->
-            <a href="{% url 'modify_appointment' appointment.id %}"
-                class="btn btn-warning btn-sm float-right">Modify</a>
-        </li>
-        {% empty %}
-        <li class="list-group-item">No appointments booked.</li>
-        {% endfor %}
-    </ul>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
