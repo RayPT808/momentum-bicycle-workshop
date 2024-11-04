@@ -1,15 +1,22 @@
 {% extends "myapp/base.html" %}
+
 {% load static %}
 
 {% block title %}About{% endblock %}
 
 {% block body_class %}about-page{% endblock %}
 
-<link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
-
 {% block content %}
 
 <style>
+    body {
+        background-image: url("{% static 'images/about-background.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
     .about-page h1 {
         text-align: center;
         /* Centers the text horizontally */
@@ -19,20 +26,50 @@
 
     .footer-info {
         display: flex;
-        /* Use flexbox for layout */
         justify-content: space-between;
-        /* Space out the two sections */
+        align-items: flex-start;
+        /* Aligns items at the start */
         margin-top: 30px;
-        /* Adds some space above the footer */
     }
 
     .footer-info div {
         flex: 1;
-        /* Equal height for both columns */
         padding: 10px;
-        /* Padding for aesthetics */
         box-sizing: border-box;
-        /* Include padding in height calculation */
+    }
+
+    .download-link {
+        display: flex;
+        align-items: center;
+        /* Aligns items at the start */
+        justify-content: flex-end;
+        flex: 0;
+        padding-left: 20px;
+
+    }
+
+    .btn-transparent {
+        background-color: transparent !important;
+        /* Makes the button background transparent */
+        color: black;
+        /* Change text color to match your theme */
+        border: 2px solid black;
+        /* Border color */
+        border-radius: 5px;
+        /* Optional: rounded corners */
+        padding: 5px 15px;
+        /* Adjust padding as needed */
+        text-decoration: none;
+        /* Remove underline */
+        transition: background-color 0.3s, color 0.3s;
+        /* Smooth transition for hover effects */
+    }
+
+    .btn-transparent:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+        /* Light background on hover */
+        color: #0056b3;
+        /* Darker text color on hover */
     }
 </style>
 
@@ -58,11 +95,17 @@
         <div class="address">
             <h5>Address</h5>
             <p>808 Velodrome Street<br>Pedal City, ST 890</p>
-        </div>
-        <div class="contact-details">
+        
             <h5>Contact Details</h5>
             <p>Email: info@momentumbike.com<br>Phone: (123) 456-7890</p>
+            
         </div>
+
+
+        <div class="download-link">
+            <a href="{% static 'myapp/static/myapp/price_list.pdf' %}" class="btn btn-transparent" download>Download Price List</a>
+        </div>
+
     </div>
 
 </div>

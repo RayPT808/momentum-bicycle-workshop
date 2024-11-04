@@ -1,5 +1,7 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +10,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="/static/favicon-16x16.png" type="image/x-icon">
     <link rel="icon" href="/static/favicon-32x32.png" type="image/x-icon">
-    
+    <!-- Background Image CSS -->
+    <style>
+        body {
+            background-image: url("{% static 'images/about-background.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+
 </head>
+
 <body>
     <!-- Navigation Bar -->
     {% include 'myapp/navbar.html' %}
-    
+
     <div class="container mt-5">
         <h2>Login</h2>
         <form method="POST">
             {% csrf_token %}
-            {{ form.as_p }}  <!-- Render the form fields -->
-            <button type="submit" class="btn btn-primary">Login</button>  <!-- Styled button -->
+            {{ form.as_p }} <!-- Render the form fields -->
+            <button type="submit" class="btn btn-primary">Login</button> <!-- Styled button -->
         </form>
     </div>
 
@@ -28,4 +41,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

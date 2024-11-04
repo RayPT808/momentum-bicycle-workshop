@@ -29,7 +29,7 @@
         }
 
         .paragraph-move {
-            margin-top: 260px;
+            margin-top: 180px;
             /* Adjust this value as needed */
 
             
@@ -55,7 +55,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Book Service</a></li>
                     {% endif %}
                     {% if user.is_superuser %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>

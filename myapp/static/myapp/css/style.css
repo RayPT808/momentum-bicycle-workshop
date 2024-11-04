@@ -9,3 +9,31 @@
     
 </style>
 
+/* About page style */
+
+
+
+.about-page h1 {
+    text-align: center !important; 
+    margin: 40px 0 !important; /* Increased margin for more space below the title */
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.footer-info .address,
+.footer-info .contact-details {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .footer-info {
+        flex-direction: column;
+        text-align: center;
+    }
+}
