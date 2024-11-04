@@ -1,131 +1,230 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# BMI Calculator: a body mass index calculation app
 
-Welcome RayPT808 ,
+'BMI Calculator' is a command-line-interface (CLI) health app hosted as an app on Heroku, written in Python.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+## Purpose 
+The objective of this app is to provide the user with a guidence to reach and maintain healthy body weight. Through calculation of
+body mass index, the application will update the user about the current body weight range and let's the user track the changes over 
+time.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## Requirement Gathering and Planning
 
-## Gitpod Reminders
+Before starting the coding for this project, I took the time to think about how to set up the architecture of this app, the layout of the output on the console and the functionality required to provide a good user experience. As the CI study material advised, I kept it simple,
+and I tried to follow a 'linear' logic.
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+![Wireframe logic](documentation/wireframelogic.png)
 
-`python3 -m http.server`
+## User Demographics, Stories and Needs
 
-A blue button should appear to click: _Make Public_,
+### Target Demographic
+This app is useful for anyone wanting to track and control their body mass index and through that, their health.
+Abnormal bodyweight is linked with several illness and diseases, when one decides to make change for the better, the use of this application
+could be the first step towards a healthier lifestyle.
 
-Another blue button should appear to click: _Open Browser_.
+ Some examples of such people are: 
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+- Family history: people who's family has a history of diabetes, heart disease, obesity.
+- Sedentary lifestyle: People at full time work and with familiy duties who won't have time for their own activities, always low
+on energy. 
+- Eating disorder/ body image issues: people who are following extreme diets, trends, pursuing the lowest possible body weight.
 
-A blue button should appear to click: _Make Public_,
+### User Stories
 
-Another blue button should appear to click: _Open Browser_.
+|As a body mass index calculator user, I want to... | So that... |
+|--------|--------|
+| ...check my body mass index. | ...I will have an indicator of my generic health. |
+| ...know that in what weight category do I fall. | ...I would know if I have to gain, maintain or lose weight.|
+| ...receive specific information with regards of my weight. | ...I will have a clear number to gain or lose. |
+| ...I want to save my calculation. | ...I can start tracking my weight change, bmi change over time. |
+| ...to be able to re-do the calculation. | ...in case any of my details were not accurate, I could repeat the calculation. |
+| ...to be able to delete my last calculation, results. | ...no one else could access my details, or I just want to repeat it at a different time. |
+| ...have a clear and intuitive method of navigating through the app via the command line. | ...I can easily navigate and use the app. |
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Technologies Used
 
-To log into the Heroku toolbelt CLI:
+### Language Used
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
++ Python
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
 
-### Connecting your Mongo database
+### Frameworks, Libraries & Programs Used
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+1. Google Sheet: 
++ Google sheet was used to connect with the app in order to store data on a spreadsheet.
 
-------
+2. Google Cloud Platform
+- to set up API's.
 
-## Release History
+3. Google Sheets API
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+4. Google Drive API
 
-**June 18, 2024,** Add Mongo back into template
+5. GitHub
+- Github was used to store the project after being pushed
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+6. VS Code Editor
+- To write and run the code VS Code editor was used which is Code Institute's cloud based IDE platform.
 
-**May 28 2024:** Fix Mongo and Links installs
+### Data Model
 
-**April 26 2024:** Update node version to 16
+The data model and the use of 'CRUD' operations are central to the functioning of this CLI app. The data is stored in a Google Sheet and is not lost between sessions. 
 
-**September 20 2023:** Update Python version to 3.9.17.
+### Validation
+- There are different types of validation depending on the user input type: 
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+![Data Validation](documentation/datavalidation1.png)
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+![Data Validation](documentation/datavalidation2.png)
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+1. Validation of negative values 
+    - This checks whether the user has entered a negative value
+2. Validation for string
+    - This checks if the users' input is a string
+3. Validation for blank
+    - This checks if the user did put any value at all
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+#### To be implemented
+- Determining a range of input both for weight and height values to avoid extreme results at the calculation
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+## Features
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+1. Main Menu
+2. Weight input - with example
+3. Height input - with example
+4. BMI Result
+5. BMI Category
+6. Weight to lose/gain - if applies
+7. Delete last entry
+8. End program/ restart calculation
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+### Main Menu
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+![Main menu](documentation/programstart.png)
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+### Weight, height input - with example
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+![Weight input](documentation/userinputfields.png)
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### BMI Result, category
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+![Bmi result](documentation/processeddata.png)
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+### Weight to lose/gain - if applies
 
-------
+![Weight loss](documentation/weighttolose.png)
 
-## FAQ about the uptime script
+### Delete last entry, end program
 
-**Why have you added this script?**
+![Last entry](documentation/laststep.png)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+## Testing
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+I took a test-as-you-go approach - testing after each change to ensure that my desired outcome was achieved. 
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+I also completed an end-to-end test covering these aspects, at milestones throughout the project:
 
-**So….?**
+- Test each user journey from start to finish
+- Test going home from every input possible
+- Test every input with invalid inputs, empty inputs and extreme values (where applicable)
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
 
-**Can I opt out?**
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+| Feature | Action | Outcome |
+|----------|----------|----------|
+| Weight input    | Correct value    | Program moves to next step   |
+| Weight input    | Negative value   | Error message displayed, program back to start   |
+| Weight input    | Blank/ string   | Error message displayed, program back to start   |
+| Height input    | Correct value   | Program moves to next step, calculation triggered   |
+| Height input    | Negative value   | Error message displayed, program asks to re-enter data   |
+| Height input    | Blank/ string   | Error message displayed, program asks to re-enter data   |
+| Last entry     | Delete last entry - no   | Last entry and result will be saved in google sheets   |
+| Last entry    | Delete last entry - yes  | Last entry and result will be deleted from google sheets    |
+| Recalculate    | Calculate again - yes   | Program returns to the start point   |
+| Recalculate   | Calculate again - no  | Program ends  |
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
 
-**Anything more?**
+### Important
+- At this stage there are still no high or low values set to avoid extreme, non realistic results.
+- The calculation will go ahead even if someone would put in 500 kg's as body weight or 3.78 as height.
+![Extreme values](documentation/extremevalues.png)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+-Looking at other bmi calculators online this seems to be a common problem...
 
----
+(https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi-m.htm)
 
-Happy coding!
+![Extreme bmi](documentation/extremebmi.png)
+
+(https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/metric_bmi_calculator/bmi_calculator.html)
+
+![Extreme bmi2](documentation/extremebmi2.png)
+
+- For future improvement I'm looking for the pricipal that could be implemented to avoid extreme results.
+- An alternative solution would be to display a second, confirmation message for the user just before triggering the calculation.
+
+### Code Validation
+PEP8 validation using the Code Institute Python Linter was completed at milestones throughout the project and once right at the end. Mutiple errors of indentation, blank line whtitespace and long lines were found.
+
+![Pip8 errors](documentation/pip8linterbugs.png)
+
+Fixed the errors mentioned above by staying with the current set of code. With more time avilable another approach would have been to re-factor some of the code.
+
+![Fixed errors](documentation/fixedbugs.png)
+
+### Browser compatibility
+Tested the application on **Chrome**, **Safari**, **Firefox**.
+Appearance normal, functions working.
+
+### Unfixed Bugs
+
+Not that I am aware of at this stage.
+
+
+## Deployment
+
+This project was deployed to [Heroku](https://id.heroku.com/login): a hosting platform and is accessible via the mock terminal displayed on the [dedicated app page here](https://bmi-calculator-6b92d479472a.herokuapp.com/). 
+
+These are the steps I took to set up my infrastructure and deploy my app:
+
+1. Created a blank [Google Sheet](https://docs.google.com/spreadsheets/d/1dEQo7Hksi_dG7rFAgZyFmY7vDs_IfEl-ca-bAwBe-nA/edit?gid=1680754323#gid=1680754323) to store my data with the name 'bmi_calculator'.
+2. Created a new project on the [Google Cloud Platform](https://console.cloud.google.com/welcome?project=portfolioprojectthree) by clicking 'New Project' from the project selection dropdown in the top menu bar.
+3. Navigated to the 'Portfolioprojectthree' project page and clicked on 'APIs & Services' in the left hand burger menu. 
+4. From here I enabled the 'Google Drive API' and navigated to the 'Credentials' section. I set the API being used as the 'Google Drive API' and the type of data I'll be accessing to 'Application Data'. I answered 'No' to the question asking me if I would be using one or more of a specific set of other services.
+5. Next I set up the Service Account details with a name and the editor role, leaving everything else blank.
+6. When this was created I clicked on the service account on the next page, and the 'Keys' tab, where I created a new JSON key file which I downloaded to my computer.
+7. Next, I enabled the Google Sheets API. This was just a case of searching for this API on from the 'APIs & Services' page and clicking 'Enable'. Nothing further was required.
+8. I created a new repository on my GitHub from the [Code Institute template](https://github.com/Code-Institute-Org/p3-template) and named it 'Portfolio-project-three'.
+9. I opened this repo on my IDE and uploaded the JSON key file from earlier, renaming it 'creds.json'. This was then added to the gitignore file so that the credentials are not sent to GitHub.
+10. The service account details from the creds.json file, listed as 'client_email' were added to the Google Sheet as a user to enable the app to read and write data from and to it. 
+11. On Heroku, in the settings, a config var named 'CREDS' was created and the contents of the creds.json file were added to the value field, to enable Heroku to access the app. 
+12. I added another config var called 'PORT' set to '8000' here too. 
+13. Further dependencies required outside of those in the requirements.txt file found in my repository, were added via buildpacks on Heroku, again found in the settings. Firstly, 'python' and then 'nodejs' in that order.
+14. Next I clicked on the 'Deploy' tab and connected my github repository code to the Heroku app. I clicked 'Manually deploy' and Heroku deployed the app for me. Once this was done, the link to the app appeared and could be clicked to go to the deployed app.
+
+## Credits
+
+### APIs and Third Party Libraries
+1. [Google Sheets API: 'gspread'](https://docs.gspread.org/en/v6.0.0/) - This was installed to provide access to the associated spreadsheet which will hold all the data for BMI calculator.
+2. [Date/Time Module: 'datetime'](https://docs.python.org/3/library/datetime.html) - This was installed to provide dates to work with, so a history of body weight and body mass index change can be made.
+
+### BMI 
+1. Calculation and formula of body mass index was taken from (https://www.diabetes.ca/resources/tools---resources/body-mass-index-(bmi)-calculator#:~:text=Body%20Mass%20Index%20is%20a,range%20is%2018.5%20to%2024.9.)
+2. BMI chart to determine categories was taken from (https://calculatorsworld.com/health/bmi-chart-men-women-metric/#google_vignette)
+
+### Sources of Learning
+I referred back to the Love Sandwiches Walkthrough Project set up videos to remind me how to set up the APIs, credentials and files before starting coding.
+
+
+### Acknowledgement 
+Grateful for the help and the input from my mentor **Can Sücüllü**.
+He always gave a different perspective on the issues and with his experience
+and eyes for details I was guided in the right direction to make this project happen.
+
+
+
+
+
+
+
