@@ -5,4 +5,7 @@
     .about-page {
         background-image: url("{% static 'myapp/images/about-background.jpg' %}");
     }
+
+    
 </style>
+

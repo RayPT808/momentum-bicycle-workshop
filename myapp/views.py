@@ -53,8 +53,15 @@ def register(request):
 def profile(request):
     return render(request, 'profile.html')
 
+from datetime import datetime, timedelta
+from django.utils import timezone
+
 @login_required
 def book_appointment(request):
+    # Define restricted days (0=Monday, 6=Sunday) and times (in 24-hour format)
+    restricted_days = [5, 6]  # For example, 5=Saturday, 6=Sunday
+    restricted_times = [(18, 0), (20, 0)]  # Restrict appointments from 6 PM to 8 PM
+
     # Check if the user already has a future appointment
     existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
 
@@ -70,6 +77,23 @@ def book_appointment(request):
         if form.is_valid():
             appointment = form.save(commit=False)
             appointment.user = request.user  # Associate the appointment with the logged-in user
+
+            # Check if the selected date is restricted
+            appointment_day = appointment.date.weekday()  # Get the day of the week (0=Monday, 6=Sunday)
+            appointment_time = (appointment.time.hour, appointment.time.minute)  # Get the time as a tuple
+            
+            # Check if the appointment falls on a restricted day or within restricted times
+            if appointment_day in restricted_days:
+                messages.error(request, "You cannot book appointments on weekends.")
+                return redirect('book_appointment')
+
+            # Check if appointment time is within restricted times
+            for start_time in restricted_times:
+                # Compare the start time (e.g., 18:00) with appointment time
+                if appointment_time >= start_time and appointment_time < (start_time[0] + 1, 0):  # Check if it's within the hour
+                    messages.error(request, "You cannot book appointments during restricted hours (6 PM to 8 PM).")
+                    return redirect('book_appointment')
+
             appointment.save()  # Save the appointment
             messages.success(request, "Your appointment has been booked successfully.")
             return redirect('appointment_list')  # Redirect to the list of appointments
@@ -79,19 +103,9 @@ def book_appointment(request):
 
 @login_required
 def appointment_list(request):
-    appointments = Appointment.objects.filter(user=request.user).order_by('date', 'time')
-    return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
+    appointments = Appointment.objects.filter(user=request.user).order_by('date')
+    return render(request, 'myapp/appointment_list.html', {'appointments': appointments})  
 
-@login_required
-def cancel_appointment(request, appointment_id):
-    appointment = get_object_or_404(Appointment, id=appointment_id, user=request.user)
-    
-    if request.method == "POST":
-        appointment.delete()
-        messages.success(request, "Your appointment has been canceled.")
-        return redirect('appointment_list')
-    
-    return render(request, 'myapp/cancel_appointment.html', {'appointment': appointment})
 
 def edit_appointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
@@ -127,22 +141,51 @@ def delete_appointment(request, appointment_id):
     return redirect('appointment_list')  # Adjust this to your URL name for the appointment list.
         
 
+def cancel_appointment(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+    appointment.delete()
+    return redirect('appointment_list')  #     
+
 @login_required
 def appointment_events(request):
     appointments = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date())
     events = []
-    
+
     for appointment in appointments:
-        # Combine the date and time into a single datetime object for start and end
         start_datetime = timezone.make_aware(timezone.datetime.combine(appointment.date, appointment.time))
-        end_datetime = start_datetime + timezone.timedelta(hours=1)  # Assuming appointments are 1 hour long
+        end_datetime = start_datetime + timezone.timedelta(hours=1)
 
         events.append({
             'title': appointment.description,
-            'start': start_datetime.isoformat(),  # Correctly format start
-            'end': end_datetime.isoformat(),      # Correctly format end
+            'start': start_datetime.isoformat(),
+            'end': end_datetime.isoformat(),
         })
+
+    # Adding restrictions
+    # For example, disabling weekends
+    today = timezone.now().date()
+    for i in range(7):  # Next 7 days
+        date = today + timezone.timedelta(days=i)
+        if date.weekday() in [5, 6]:  # Saturday and Sunday
+            events.append({
+                'title': 'Unavailable',
+                'start': date.isoformat() + 'T00:00:00',
+                'end': date.isoformat() + 'T23:59:59',
+                'rendering': 'background',  # Render as background to indicate unavailable
+            })
     
+    # Example for lunch hours (12 PM - 1 PM)
+    for appointment in appointments:
+        start_lunch = timezone.datetime.combine(appointment.date, timezone.datetime.strptime("12:00", "%H:%M").time())
+        end_lunch = start_lunch + timezone.timedelta(hours=1)
+
+        events.append({
+            'title': 'Lunch Hour - Unavailable',
+            'start': start_lunch.isoformat(),
+            'end': end_lunch.isoformat(),
+            'rendering': 'background',
+        })
+
     return JsonResponse(events, safe=False)
 
 def export_appointments(request):

@@ -1,27 +1,43 @@
 <!-- book_appointment.html -->
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Appointment</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+
+
+    <style>
+        .fc-unavailable {
+            background-color: rgba(255, 0, 0, 0.5); /* Red background for unavailable days */
+            color: white;
+        }
+    </style>
+    
 </head>
+
 <body>
 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Book an Appointment</h2>
 
         {% if messages %}
-            <div class="alert alert-dismissible fade show" role="alert">
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                {% endfor %}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+        <div class="alert alert-dismissible fade show" role="alert">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         {% endif %}
 
         <form method="post" enctype="multipart/form-data">
@@ -57,12 +73,19 @@
                 initialView: 'dayGridMonth',
                 selectable: true,
                 dateClick: function (info) {
-                    document.getElementById('id_date').value = info.dateStr;
+                    // Check if the clicked date is available (i.e., not a background event)
+                    if (!info.dayEl.classList.contains('fc-unavailable')) {
+                        document.getElementById('id_date').value = info.dateStr;
+                    } else {
+                        alert('This date is unavailable for booking.');
+                    }
                 },
                 events: '/api/events/'
             });
+
             calendar.render();
         });
     </script>
 </body>
+
 </html>
