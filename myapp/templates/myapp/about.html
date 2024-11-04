@@ -16,6 +16,24 @@
         margin: 20px 0;
         /* Optional: Adds some vertical spacing */
     }
+
+    .footer-info {
+        display: flex;
+        /* Use flexbox for layout */
+        justify-content: space-between;
+        /* Space out the two sections */
+        margin-top: 30px;
+        /* Adds some space above the footer */
+    }
+
+    .footer-info div {
+        flex: 1;
+        /* Equal height for both columns */
+        padding: 10px;
+        /* Padding for aesthetics */
+        box-sizing: border-box;
+        /* Include padding in height calculation */
+    }
 </style>
 
 
@@ -33,6 +51,19 @@
         Join our community of bike lovers and discover a world of cycling possibilities!
 
         Ride with us, and let’s keep the momentum going!</p>
+
+
+
+    <div class="footer-info">
+        <div class="address">
+            <h5>Address</h5>
+            <p>808 Velodrome Street<br>Pedal City, ST 890</p>
+        </div>
+        <div class="contact-details">
+            <h5>Contact Details</h5>
+            <p>Email: info@momentumbike.com<br>Phone: (123) 456-7890</p>
+        </div>
+    </div>
 
 </div>
 
