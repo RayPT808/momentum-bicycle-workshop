@@ -1,44 +1,58 @@
-# BMI Calculator: a body mass index calculation app
+# Momentum Bicycle Workshop
 
-'BMI Calculator' is a command-line-interface (CLI) health app hosted as an app on Heroku, written in Python.
+The Momentum Bicycle Workshop website is an imaginery workshop for anyone who needs some sort of service to be carried out on their bicycle.
+As one would say this would your local bike shop. It's not a frnachise or a big multi corporation, Momentum Bicycle Workshop is a small independent
+business, that was openened with the aim to help out anyone who is having troubles with the bicycle. The main driving force behind the business is
+the passion for cycling, promoting a healthier way of locomotion and the social aspects of cycling.
 
 ## Purpose 
-The objective of this app is to provide the user with a guidence to reach and maintain healthy body weight. Through calculation of
-body mass index, the application will update the user about the current body weight range and let's the user track the changes over 
-time.
+The objective of this app/ website is to provide the user with a guidence and service regarding bicycle issues.
+This project is my fourth milestone project of my Code Institute Full Stack Developer course.
 
 ## Requirement Gathering and Planning
 
-Before starting the coding for this project, I took the time to think about how to set up the architecture of this app, the layout of the output on the console and the functionality required to provide a good user experience. As the CI study material advised, I kept it simple,
-and I tried to follow a 'linear' logic.
+Before starting the coding for this project, I took the time to think about how to set up the architecture of this app, the layout of the output on the frontend and the functionality required to provide a good user experience. 
+To get some inspiration I did look around if there are any similar business and if so how does their website look like? (based on my location)
 
-![Wireframe logic](documentation/wireframelogic.png)
+(https://bicycle-workshop.de/about)
+
+(https://velovezh.ch/)
+
+(https://www.imboden-bike.ch/en/workshop)
+
+(https://aureusdrive.ch/en/about-us/blog/)
+
+Well, it didn't take to long to notice, there isn't much out there on this market. From these businesses nothing stood out.
+I really like an aesthetically pleasing look of website, regardless of what is the website related to.
+Seems like bigger companies have a well structured, more complex website, with additional e-commerce functionality.
+But I was after the small local shop "feeling", and some of those businesses don't even have a website...so right there is a small
+market gap for simple, but nice websites with few basic functions. Once I realized this, this was/is my vision throughout the process.
+
 
 ## User Demographics, Stories and Needs
 
+A small, friendly business perhaps could connect with the custumers better, making them returning customer in the long run.
+Momentum Bicycle Workshop is targeting everybody on bikes. The from daily commuters to the weekend leisure riders and even the competitive- sporty riders.
+
 ### Target Demographic
-This app is useful for anyone wanting to track and control their body mass index and through that, their health.
-Abnormal bodyweight is linked with several illness and diseases, when one decides to make change for the better, the use of this application
-could be the first step towards a healthier lifestyle.
 
- Some examples of such people are: 
+This website is useful for anyone wanting to have a fast and reliable repair work done on his/ her bicycle.
 
-- Family history: people who's family has a history of diabetes, heart disease, obesity.
-- Sedentary lifestyle: People at full time work and with familiy duties who won't have time for their own activities, always low
-on energy. 
-- Eating disorder/ body image issues: people who are following extreme diets, trends, pursuing the lowest possible body weight.
+ Some examples of such users are: 
+
+- The teenager who rides bike daily to school and has a puncture.
+- The hipster university student who will head for beers with his friends, but he would like to show off his new pedals. 
+- The pensioner grandma who rides her bike once a week to the market, but it's been a while now since that bike had a full maintenance job.
 
 ### User Stories
 
-|As a body mass index calculator user, I want to... | So that... |
+|As website user for a service, I want to... | So that... |
 |--------|--------|
-| ...check my body mass index. | ...I will have an indicator of my generic health. |
-| ...know that in what weight category do I fall. | ...I would know if I have to gain, maintain or lose weight.|
-| ...receive specific information with regards of my weight. | ...I will have a clear number to gain or lose. |
-| ...I want to save my calculation. | ...I can start tracking my weight change, bmi change over time. |
-| ...to be able to re-do the calculation. | ...in case any of my details were not accurate, I could repeat the calculation. |
-| ...to be able to delete my last calculation, results. | ...no one else could access my details, or I just want to repeat it at a different time. |
-| ...have a clear and intuitive method of navigating through the app via the command line. | ...I can easily navigate and use the app. |
+| ...be able to find a bike shop online, that is nearby. | ...I can plan my visit to the workshop. |
+| ...get information on the prices of the services. | ...I can make and informed decision on what service I need.|
+| ...be able to call or email the workshop. | ...I can have specific questions with regards to the services. |
+| ...be able to register on the shop's system. | ...I can schedule an appointment for bike repairs. |
+| ...to be able to modify or delete my existing appointments. | ...in case for some reason I cannot make it to the original appointment. |
 
 ## Technologies Used
 
