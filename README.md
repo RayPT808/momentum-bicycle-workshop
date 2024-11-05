@@ -5,6 +5,8 @@ As one would say this would your local bike shop. It's not a frnachise or a big 
 business, that was openened with the aim to help out anyone who is having troubles with the bicycle. The main driving force behind the business is
 the passion for cycling, promoting a healthier way of locomotion and the social aspects of cycling.
 
+![Momentum](documentation/screenshots/momentum.png)
+
 ## Purpose 
 The objective of this app/ website is to provide the user with a guidence and service regarding bicycle issues.
 This project is my fourth milestone project of my Code Institute Full Stack Developer course.
@@ -80,58 +82,69 @@ This website is useful for anyone wanting to have a fast and reliable repair wor
 5. Code Editor
 - To write and run the code GitHub' Code editor was used.
 
+6. Favicon
+
 ### Data Model
 
 The data model and the use of 'CRUD' operations are central to the functioning of the app. 
 
-### Validation
-- There are different types of validation depending on the user input type: 
+### Authenticatin, Validation
 
-![Data Validation](documentation/datavalidation1.png)
 
-![Data Validation](documentation/datavalidation2.png)
+1. Authentication of customers at log in 
 
-1. Validation of negative values 
-    - This checks whether the user has entered a negative value
-2. Validation for string
-    - This checks if the users' input is a string
-3. Validation for blank
-    - This checks if the user did put any value at all
+2. Authentication of 'shop owner' at login
+    
+3. Authentication of 'super user' at website admin log in
+
+4. Validation of restricted days/ times at appointment booking
+
+5. Validation of appointment cancellation
+  
 
 
 #### To be implemented
-- Determining a range of input both for weight and height values to avoid extreme results at the calculation
+- A user friendly calendar view to book appointments instead of the old fashioned scroll down list
+
+- A system to prioritise jobs for shop owner such as 'in progress' - 'completed'
+
+- 'Where to find us' section with a map of the shop's location
+
+- Contact details for existing appointments on the system
 
 ## Features
 
 1. Navigation bar
-2. PDF price list
+
+![Navigation bar](documentation/screenshots/navbar.png)
+
+2. Link to PDF price list
+
+![PDF price list to download](documentation/screenshots/pricelist.png)
+
 3. Registration
+
+![New user registration](documentation/screenshots/registration.png)
+
 4. Log In page - for user and owner
+
+![Log in](documentation/screenshots/login.png)
+
 5. Appointment - schedule for user and owner
+
+![Appointment schedule](documentation/screenshots/bookappointment.png)
+
 6. Appointment - modification for user and owner
-7. Picture upload - for user
+
+![Modify appointment](documentation/screenshots/modifyappointment.png)
+
+7. Photo upload - for user
+
+![Photo upload option](documentation/screenshots/photoupload.png)
+
 8. Django Admin log in - for developer of the website
 
-### Main Menu
-
-![Main menu](documentation/programstart.png)
-
-### Weight, height input - with example
-
-![Weight input](documentation/userinputfields.png)
-
-### BMI Result, category
-
-![Bmi result](documentation/processeddata.png)
-
-### Weight to lose/gain - if applies
-
-![Weight loss](documentation/weighttolose.png)
-
-### Delete last entry, end program
-
-![Last entry](documentation/laststep.png)
+![Django admin panel](documentation/screenshots/djangodashboard.png)
 
 
 
@@ -143,7 +156,7 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 
 - Test each user journey from start to finish
 - Test going home from every input possible
-- Test every input with invalid inputs, empty inputs and extreme values (where applicable)
+- Test every input with invalid inputs, empty inputs and wrong values (where applicable)
 
 
 
