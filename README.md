@@ -65,25 +65,24 @@ This website is useful for anyone wanting to have a fast and reliable repair wor
 
 ### Frameworks, Libraries & Programs Used
 
-1. Google Sheet: 
-+ Google sheet was used to connect with the app in order to store data on a spreadsheet.
+1. Code Institue template: 
++ The foundations are based on Code Institutes Blog project in the study material.
 
-2. Google Cloud Platform
-- to set up API's.
+2. Django
 
-3. Google Sheets API
 
-4. Google Drive API
+3. Bootstrap:
 
-5. GitHub
+
+4. GitHub
 - Github was used to store the project after being pushed
 
-6. VS Code Editor
-- To write and run the code VS Code editor was used which is Code Institute's cloud based IDE platform.
+5. Code Editor
+- To write and run the code GitHub' Code editor was used.
 
 ### Data Model
 
-The data model and the use of 'CRUD' operations are central to the functioning of this CLI app. The data is stored in a Google Sheet and is not lost between sessions. 
+The data model and the use of 'CRUD' operations are central to the functioning of the app. 
 
 ### Validation
 - There are different types of validation depending on the user input type: 
@@ -105,14 +104,14 @@ The data model and the use of 'CRUD' operations are central to the functioning o
 
 ## Features
 
-1. Main Menu
-2. Weight input - with example
-3. Height input - with example
-4. BMI Result
-5. BMI Category
-6. Weight to lose/gain - if applies
-7. Delete last entry
-8. End program/ restart calculation
+1. Navigation bar
+2. PDF price list
+3. Registration
+4. Log In page - for user and owner
+5. Appointment - schedule for user and owner
+6. Appointment - modification for user and owner
+7. Picture upload - for user
+8. Django Admin log in - for developer of the website
 
 ### Main Menu
 
