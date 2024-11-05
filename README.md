@@ -59,6 +59,8 @@ This website is useful for anyone wanting to have a fast and reliable repair wor
 ### Language Used
 
 + Python
+* HTML
+- CSS
 
 
 ### Frameworks, Libraries & Programs Used
