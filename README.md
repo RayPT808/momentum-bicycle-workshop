@@ -28,13 +28,14 @@ Well, it didn't take to long to notice, there isn't much out there on this marke
 I really like an aesthetically pleasing look of website, regardless of what is the website related to.
 Seems like bigger companies have a well structured, more complex website, with additional e-commerce functionality.
 But I was after the small local shop "feeling", and some of those businesses don't even have a website...so right there is a small
-market gap for simple, but nice websites with few basic functions. Once I realized this, this was/is my vision throughout the process.
+market gap for simple, but nice websites with few basic functions. 
+Once I realized this, this was/ is my vision throughout the process.
 
 
 ## User Demographics, Stories and Needs
 
 A small, friendly business perhaps could connect with the custumers better, making them returning customer in the long run.
-Momentum Bicycle Workshop is targeting everybody on bikes. The from daily commuters to the weekend leisure riders and even the competitive- sporty riders.
+Momentum Bicycle Workshop is targeting everybody on bikes. From the daily commuters to the weekend leisure riders and even the competitive- sporty riders.
 
 ### Target Demographic
 
@@ -80,7 +81,7 @@ This website is useful for anyone wanting to have a fast and reliable repair wor
 - Github was used to store the project after being pushed
 
 5. Code Editor
-- To write and run the code GitHub' Code editor was used.
+- To write and run the code GitHub's Code editor was used.
 
 6. Favicon
 
@@ -187,24 +188,8 @@ Appearance normal, functions working.
 
 ## Deployment
 
-This project was deployed to [Heroku](https://id.heroku.com/login): a hosting platform and is accessible via the mock terminal displayed on the [dedicated app page here](https://bmi-calculator-6b92d479472a.herokuapp.com/). 
+This project was deployed to [Heroku](https://id.heroku.com/login): a hosting platform and is accessible via the mock terminal displayed on the (https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/). 
 
-These are the steps I took to set up my infrastructure and deploy my app:
-
-1. Created a blank [Google Sheet](https://docs.google.com/spreadsheets/d/1dEQo7Hksi_dG7rFAgZyFmY7vDs_IfEl-ca-bAwBe-nA/edit?gid=1680754323#gid=1680754323) to store my data with the name 'bmi_calculator'.
-2. Created a new project on the [Google Cloud Platform](https://console.cloud.google.com/welcome?project=portfolioprojectthree) by clicking 'New Project' from the project selection dropdown in the top menu bar.
-3. Navigated to the 'Portfolioprojectthree' project page and clicked on 'APIs & Services' in the left hand burger menu. 
-4. From here I enabled the 'Google Drive API' and navigated to the 'Credentials' section. I set the API being used as the 'Google Drive API' and the type of data I'll be accessing to 'Application Data'. I answered 'No' to the question asking me if I would be using one or more of a specific set of other services.
-5. Next I set up the Service Account details with a name and the editor role, leaving everything else blank.
-6. When this was created I clicked on the service account on the next page, and the 'Keys' tab, where I created a new JSON key file which I downloaded to my computer.
-7. Next, I enabled the Google Sheets API. This was just a case of searching for this API on from the 'APIs & Services' page and clicking 'Enable'. Nothing further was required.
-8. I created a new repository on my GitHub from the [Code Institute template](https://github.com/Code-Institute-Org/p3-template) and named it 'Portfolio-project-three'.
-9. I opened this repo on my IDE and uploaded the JSON key file from earlier, renaming it 'creds.json'. This was then added to the gitignore file so that the credentials are not sent to GitHub.
-10. The service account details from the creds.json file, listed as 'client_email' were added to the Google Sheet as a user to enable the app to read and write data from and to it. 
-11. On Heroku, in the settings, a config var named 'CREDS' was created and the contents of the creds.json file were added to the value field, to enable Heroku to access the app. 
-12. I added another config var called 'PORT' set to '8000' here too. 
-13. Further dependencies required outside of those in the requirements.txt file found in my repository, were added via buildpacks on Heroku, again found in the settings. Firstly, 'python' and then 'nodejs' in that order.
-14. Next I clicked on the 'Deploy' tab and connected my github repository code to the Heroku app. I clicked 'Manually deploy' and Heroku deployed the app for me. Once this was done, the link to the app appeared and could be clicked to go to the deployed app.
 
 ## Credits
 
