@@ -160,46 +160,18 @@ I also completed an end-to-end test covering these aspects, at milestones throug
 
 
 
-| Feature | Action | Outcome |
-|----------|----------|----------|
-| Weight input    | Correct value    | Program moves to next step   |
-| Weight input    | Negative value   | Error message displayed, program back to start   |
-| Weight input    | Blank/ string   | Error message displayed, program back to start   |
-| Height input    | Correct value   | Program moves to next step, calculation triggered   |
-| Height input    | Negative value   | Error message displayed, program asks to re-enter data   |
-| Height input    | Blank/ string   | Error message displayed, program asks to re-enter data   |
-| Last entry     | Delete last entry - no   | Last entry and result will be saved in google sheets   |
-| Last entry    | Delete last entry - yes  | Last entry and result will be deleted from google sheets    |
-| Recalculate    | Calculate again - yes   | Program returns to the start point   |
-| Recalculate   | Calculate again - no  | Program ends  |
 
-
-### Important
-- At this stage there are still no high or low values set to avoid extreme, non realistic results.
-- The calculation will go ahead even if someone would put in 500 kg's as body weight or 3.78 as height.
-![Extreme values](documentation/extremevalues.png)
-
--Looking at other bmi calculators online this seems to be a common problem...
-
-(https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmi-m.htm)
-
-![Extreme bmi](documentation/extremebmi.png)
-
-(https://www.cdc.gov/healthyweight/assessing/bmi/adult_bmi/metric_bmi_calculator/bmi_calculator.html)
-
-![Extreme bmi2](documentation/extremebmi2.png)
-
-- For future improvement I'm looking for the pricipal that could be implemented to avoid extreme results.
-- An alternative solution would be to display a second, confirmation message for the user just before triggering the calculation.
 
 ### Code Validation
-PEP8 validation using the Code Institute Python Linter was completed at milestones throughout the project and once right at the end. Mutiple errors of indentation, blank line whtitespace and long lines were found.
 
-![Pip8 errors](documentation/pip8linterbugs.png)
+- HTML validation
 
-Fixed the errors mentioned above by staying with the current set of code. With more time avilable another approach would have been to re-factor some of the code.
+![HTML Code](documentation/screenshots/htmlvalidation.png)
 
-![Fixed errors](documentation/fixedbugs.png)
++ CSS validation
+
+![CSS Code](documentation/screenshots/cssvalidation.png)
+
 
 ### Browser compatibility
 Tested the application on **Chrome**, **Safari**, **Firefox**.
@@ -207,7 +179,10 @@ Appearance normal, functions working.
 
 ### Unfixed Bugs
 
-Not that I am aware of at this stage.
+- Appointment extraction for owner
+
+![Error 505](documentation/screenshots/exporterror.png)
+
 
 
 ## Deployment
