@@ -148,6 +148,26 @@ The data model and the use of 'CRUD' operations are central to the functioning o
 ![Django admin panel](documentation/screenshots/djangodashboard.png)
 
 
+## User log in details
+
+### Customer
+
+- username: blackjack
+- password: training2024
+
+### Shop Owner
+
+- username: shopowner2024
+- password: fixthebike
+
+### Django Admin
+
+- username: shopowner2024
+- password: fixthebike
+
+![Admin link](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/admin/myapp/appointment/)
+
+
 
 ## Testing
 
