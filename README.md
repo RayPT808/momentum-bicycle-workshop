@@ -113,6 +113,8 @@ The data model and the use of 'CRUD' operations are central to the functioning o
 
 - Contact details for existing appointments on the system
 
+- Forgotten password, password reset
+
 ## Features
 
 1. Navigation bar
@@ -165,7 +167,8 @@ The data model and the use of 'CRUD' operations are central to the functioning o
 - username: shopowner2024
 - password: fixthebike
 
-![Admin link](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/admin/myapp/appointment/)
+ Admin link (https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/admin/myapp/appointment/)
+
 
 
 
@@ -214,15 +217,17 @@ This project was deployed to [Heroku](https://id.heroku.com/login): a hosting pl
 ## Credits
 
 ### APIs and Third Party Libraries
-1. [Google Sheets API: 'gspread'](https://docs.gspread.org/en/v6.0.0/) - This was installed to provide access to the associated spreadsheet which will hold all the data for BMI calculator.
-2. [Date/Time Module: 'datetime'](https://docs.python.org/3/library/datetime.html) - This was installed to provide dates to work with, so a history of body weight and body mass index change can be made.
 
-### BMI 
-1. Calculation and formula of body mass index was taken from (https://www.diabetes.ca/resources/tools---resources/body-mass-index-(bmi)-calculator#:~:text=Body%20Mass%20Index%20is%20a,range%20is%2018.5%20to%2024.9.)
-2. BMI chart to determine categories was taken from (https://calculatorsworld.com/health/bmi-chart-men-women-metric/#google_vignette)
+- I used Learn Django to help me set up login/logout etc.
+
++ I also used the documentation of all the elements included in this project: Django, Bootstrap
+
+* I tried to map the project on Git Hub's Kanban Board to visualise the phases
+
+![Kanaban board](documentation/screenshots/kanbanboard.png)
 
 ### Sources of Learning
-I referred back to the Love Sandwiches Walkthrough Project set up videos to remind me how to set up the APIs, credentials and files before starting coding.
+I referred back to the Blog Post Walkthrough Project set up videos to remind me how to set up the main structure, functions, credentials and files before starting coding.
 
 
 ### Acknowledgement 
