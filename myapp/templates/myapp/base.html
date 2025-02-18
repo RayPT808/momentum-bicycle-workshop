@@ -22,7 +22,8 @@
         }
 
         /* Background for the about page */
-        body.about-page, body.register-page {
+        body.about-page,
+        body.register-page {
             background-image: url("{% static 'images/about-background.jpg' %}");
             background-size: cover;
             background-repeat: no-repeat;
@@ -31,9 +32,6 @@
         .paragraph-move {
             margin-top: 180px;
             /* Adjust this value as needed */
-
-            
-
         }
     </style>
 </head>
@@ -52,10 +50,17 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                    <!-- Add logout form here -->
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger nav-link"
+                                style="border: none; background: none;">Logout</button>
+                        </form>
+                    </li>
                     {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Book Service</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
                     {% endif %}
                     {% if user.is_superuser %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>
@@ -64,7 +69,6 @@
             </div>
         </nav>
     </header>
-
 
     <div class="container" style="margin-top: 70px;">
         {% block content %}{% endblock %}
