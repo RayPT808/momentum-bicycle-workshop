@@ -38,6 +38,14 @@ ALLOWED_HOSTS = [
     '8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com',
+    'https://momentumbicycl-8ufp2aa6k6a.ws-eu117.gitpod.io',
+    'https://8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io'
+]
+
+
+
 
 
 # repotestdjango/settings.py
