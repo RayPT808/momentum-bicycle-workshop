@@ -52,12 +52,16 @@
                     </li>
                     <!-- Add logout form here -->
                     <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}">
+                        <form action="{% url 'logout' %}" method="post">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger nav-link"
-                                style="border: none; background: none;">Logout</button>
+                            <button type="submit" class="btn btn-danger">Logout</button>
+
                         </form>
+
                     </li>
+
+
+
                     {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>

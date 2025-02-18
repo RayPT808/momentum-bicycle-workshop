@@ -3,6 +3,7 @@ from .models import Appointment
 from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.views import LogoutView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.utils import timezone
@@ -216,6 +217,5 @@ class OwnerDashboardView(LoginRequiredMixin, TemplateView):
 
         return render(request, 'myapp/owner_dashboard.html', {'appointments': appointments})
 
-def logout_view(request):
-    logout(request)
-    return redirect('home')
+class CustomLogoutView(LogoutView):
+    next_page = 'home'

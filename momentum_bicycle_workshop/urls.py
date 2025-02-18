@@ -3,10 +3,13 @@ from django.contrib import admin
 from myapp import views
 from django.conf import settings
 from django.conf.urls.static import static
+from myapp.views import CustomLogoutView
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('logout/', views.CustomLogoutView.as_view(), name='logout'),
     path('', include('myapp.urls')),
     path('about/', views.about, name='about'),
     path('register/', views.register, name='register'),
@@ -15,9 +18,7 @@ urlpatterns = [
     path('owner/export/', views.export_appointments, name='export_appointments'),
     path('owner/edit/<int:id>/', views.edit_appointment, name='edit_appointment'),
     path('owner/delete/<int:id>/', views.delete_appointment, name='delete_appointment'),
-    # Add other paths as needed
-    # Include all app URLs here only if the app uses its own url configurations
-    # path('', include('myapp.urls')),
+
 ]
 
 if settings.DEBUG:
