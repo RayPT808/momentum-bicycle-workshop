@@ -7,7 +7,13 @@
 
             {% if user.is_authenticated %}
             <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            <!-- Logout form with POST method -->
+            <li class="nav-item">
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link btn btn-link" style="padding: 0; border: none; background: none;">Logout</button>
+                </form>
+            </li>
 
             {% if user.is_superuser %}
             <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>
@@ -18,7 +24,6 @@
             <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
             {% endif %}
         </ul>
-
-       
     </div>
 </nav>
+

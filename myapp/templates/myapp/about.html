@@ -1,5 +1,4 @@
 {% extends "myapp/base.html" %}
-
 {% load static %}
 
 {% block title %}About{% endblock %}
@@ -7,107 +6,38 @@
 {% block body_class %}about-page{% endblock %}
 
 {% block content %}
-
-<style>
-    body {
-        background-image: url("{% static 'images/about-background.jpg' %}");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-
-    .about-page h1 {
-        text-align: center;
-        /* Centers the text horizontally */
-        margin: 20px 0;
-        /* Optional: Adds some vertical spacing */
-    }
-
-    .footer-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        /* Aligns items at the start */
-        margin-top: 30px;
-    }
-
-    .footer-info div {
-        flex: 1;
-        padding: 10px;
-        box-sizing: border-box;
-    }
-
-    .download-link {
-        display: flex;
-        align-items: center;
-        /* Aligns items at the start */
-        justify-content: flex-end;
-        flex: 0;
-        padding-left: 20px;
-
-    }
-
-    .btn-transparent {
-        background-color: transparent !important;
-        /* Makes the button background transparent */
-        color: black;
-        /* Change text color to match your theme */
-        border: 2px solid black;
-        /* Border color */
-        border-radius: 5px;
-        /* Optional: rounded corners */
-        padding: 5px 15px;
-        /* Adjust padding as needed */
-        text-decoration: none;
-        /* Remove underline */
-        transition: background-color 0.3s, color 0.3s;
-        /* Smooth transition for hover effects */
-    }
-
-    .btn-transparent:hover {
-        background-color: rgba(0, 123, 255, 0.1);
-        /* Light background on hover */
-        color: #0056b3;
-        /* Darker text color on hover */
-    }
-</style>
-
-
 <div class="about-page">
     <h1>About Us</h1>
-    <p class="about-page paragraph-move"> Welcome to Momentum Bicycle Workshop, your trusted partner for all things
-        cycling! Founded by passionate cyclists
-        and mechanics, we believe in the power of two wheels to inspire adventure and promote a healthy lifestyle.
+    <p class="about-page paragraph-move">
+        Welcome to Momentum Bicycle Workshop, your trusted partner for all things cycling!
+        Founded by passionate cyclists and mechanics, we believe in the power of two wheels to inspire adventure and
+        promote a healthy lifestyle.
 
         At Momentum, we offer a comprehensive range of bicycle services, including repairs, maintenance, and custom
-        builds, tailored to meet the unique needs of every rider. Our team of experienced technicians is dedicated to
-        providing top-notch service with a personal touch, ensuring that your bike performs at its best.
+        builds,
+        tailored to meet the unique needs of every rider. Our team of experienced technicians is dedicated to providing
+        top-notch service
+        with a personal touch, ensuring that your bike performs at its best.
 
         Whether you’re a casual rider or a seasoned enthusiast, we’re here to help you hit the road with confidence.
         Join our community of bike lovers and discover a world of cycling possibilities!
 
-        Ride with us, and let’s keep the momentum going!</p>
-
-
+        Ride with us, and let’s keep the momentum going!
+    </p>
 
     <div class="footer-info">
         <div class="address">
             <h5>Address</h5>
             <p>808 Velodrome Street<br>Pedal City, ST 890</p>
-        
+
             <h5>Contact Details</h5>
             <p>Email: info@momentumbike.com<br>Phone: (123) 456-7890</p>
-            
         </div>
-
 
         <div class="download-link">
-            <a href="{% static '/myapp/pdfs/price_list.pdf' %}" class="btn btn-transparent" download>Download Price List</a>
+            <a href="{% static 'myapp/pdfs/price_list.pdf' %}" class="btn btn-transparent" download>Download Price
+                List</a>
         </div>
-
     </div>
-
 </div>
-
 {% endblock %}

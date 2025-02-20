@@ -6,3 +6,4 @@ psycopg2==2.9.10
 setuptools==75.2.0
 sqlparse==0.5.1
 whitenoise==6.5.0
+whitenoise

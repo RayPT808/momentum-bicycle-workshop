@@ -24,21 +24,18 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
-    '8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io'
+    '8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
+    '8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     'https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com',
     'https://momentumbicycl-8ufp2aa6k6a.ws-eu117.gitpod.io',
-    'https://8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io'
+    'https://8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
+    'https://8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io'
 ]
 
 
-
-
-
-# repotestdjango/settings.py
-#LOGIN_REDIRECT_URL = '/'  # Redirect to home after login
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
@@ -66,9 +63,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
 
 ROOT_URLCONF = 'momentum_bicycle_workshop.urls'  
 

@@ -12,7 +12,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
 
-
     <style>
         /* Default background for the home page */
         body.home-page {
@@ -50,17 +49,15 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a>
                     </li>
-                    <!-- Add logout form here -->
+
+                    <!-- Logout form with POST method -->
                     <li class="nav-item">
-                        <form action="{% url 'logout' %}" method="post">
+                        <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">Logout</button>
-
+                            <button type="submit" class="btn btn-link nav-link"
+                                style="padding: 0; border: none; background: none;">Logout</button>
                         </form>
-
                     </li>
-
-
 
                     {% else %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
@@ -69,22 +66,3 @@
                     {% if user.is_superuser %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>
                     {% endif %}
-                </ul>
-            </div>
-        </nav>
-    </header>
-
-    <div class="container" style="margin-top: 70px;">
-        {% block content %}{% endblock %}
-    </div>
-
-    <footer class="text-center">
-        <p></p>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-
-</html>

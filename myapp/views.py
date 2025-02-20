@@ -8,15 +8,19 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View  # Import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 import csv
 import logging
 
-
-
 logger = logging.getLogger(__name__)
 
+class CustomLogoutView(View):
+    def post(self, request):
+        logout(request)
+        return redirect('home')
+
+        
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -31,7 +35,6 @@ def login_view(request):
         form = AuthenticationForm()
     
     return render(request, 'registration/login.html', {'form': form})
-
 
 def home(request):
     return render(request, 'myapp/home.html')
@@ -54,18 +57,12 @@ def register(request):
 def profile(request):
     return render(request, 'profile.html')
 
-from datetime import datetime, timedelta
-from django.utils import timezone
-
 @login_required
 def book_appointment(request):
-    # Define restricted days (0=Monday, 6=Sunday) and times (in 24-hour format)
     restricted_days = [5, 6]  # For example, 5=Saturday, 6=Sunday
-    # Define valid booking time range (8 AM to 6 PM)
     valid_start_time = (8, 0)  # 8 AM
     valid_end_time = (18, 0)   # 6 PM
 
-    # Check if the user already has a future appointment
     existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
 
     if existing_appointment:
@@ -74,44 +71,37 @@ def book_appointment(request):
 
     form = AppointmentForm()
     
-    # Handle POST request for booking an appointment
     if request.method == 'POST':
         form = AppointmentForm(request.POST, request.FILES)
         if form.is_valid():
             appointment = form.save(commit=False)
-            appointment.user = request.user  # Associate the appointment with the logged-in user
+            appointment.user = request.user
 
-            # Check if the selected date is restricted
-            appointment_day = appointment.date.weekday()  # Get the day of the week (0=Monday, 6=Sunday)
-            appointment_time = (appointment.time.hour, appointment.time.minute)  # Get the time as a tuple
+            appointment_day = appointment.date.weekday()
+            appointment_time = (appointment.time.hour, appointment.time.minute)
 
-            # Check if the appointment time is on the hour
             if appointment.time.minute != 0:
                 messages.error(request, "You can only book appointments on the hour (e.g., 1:00, 2:00).")
                 return redirect('book_appointment')
             
-            # Check if the appointment falls on a restricted day or within restricted times
             if appointment_day in restricted_days:
                 messages.error(request, "You cannot book appointments on weekends.")
                 return redirect('book_appointment')
 
-             # Check if appointment time is within valid hours
             if not (valid_start_time <= appointment_time < valid_end_time):
                 messages.error(request, "You can only book appointments between 8 AM and 6 PM.")
                 return redirect('book_appointment')
 
-            appointment.save()  # Save the appointment
+            appointment.save()
             messages.success(request, "Your appointment has been booked successfully.")
-            return redirect('appointment_list')  # Redirect to the list of appointments
+            return redirect('appointment_list')
 
-    # Render the booking form template
     return render(request, 'myapp/book_appointment.html', {'form': form})
 
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user).order_by('date')
-    return render(request, 'myapp/appointment_list.html', {'appointments': appointments})  
-
+    return render(request, 'myapp/appointment_list.html', {'appointments': appointments})
 
 def edit_appointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
@@ -139,7 +129,6 @@ def modify_appointment(request, appointment_id):
 
     return render(request, 'myapp/modify_appointment.html', {'form': form, 'appointment': appointment})
 
-
 @login_required
 def delete_appointment(request, id):
     appointment = get_object_or_404(Appointment, id=id)
@@ -149,9 +138,7 @@ def delete_appointment(request, id):
         messages.success(request, 'Appointment deleted successfully.')
         return redirect('appointment_list')
 
-    # If GET, you might want to redirect or raise an error.
-    return redirect('appointment_list')  # Or render a confirmation page.
-
+    return redirect('appointment_list')
 
 @login_required
 def appointment_events(request):
@@ -168,20 +155,17 @@ def appointment_events(request):
             'end': end_datetime.isoformat(),
         })
 
-    # Adding restrictions
-    # For example, disabling weekends
     today = timezone.now().date()
-    for i in range(7):  # Next 7 days
+    for i in range(7):
         date = today + timezone.timedelta(days=i)
-        if date.weekday() in [5, 6]:  # Saturday and Sunday
+        if date.weekday() in [5, 6]:
             events.append({
                 'title': 'Unavailable',
                 'start': date.isoformat() + 'T00:00:00',
                 'end': date.isoformat() + 'T23:59:59',
-                'rendering': 'background',  # Render as background to indicate unavailable
+                'rendering': 'background',
             })
     
-    # Example for lunch hours (12 PM - 1 PM)
     for appointment in appointments:
         start_lunch = timezone.datetime.combine(appointment.date, timezone.datetime.strptime("12:00", "%H:%M").time())
         end_lunch = start_lunch + timezone.timedelta(hours=1)
@@ -216,6 +200,3 @@ class OwnerDashboardView(LoginRequiredMixin, TemplateView):
             appointments = appointments.filter(notes__icontains=search_query)
 
         return render(request, 'myapp/owner_dashboard.html', {'appointments': appointments})
-
-class CustomLogoutView(LogoutView):
-    next_page = 'home'
