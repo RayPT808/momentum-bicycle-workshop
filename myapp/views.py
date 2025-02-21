@@ -59,9 +59,9 @@ def profile(request):
 
 @login_required
 def book_appointment(request):
-    restricted_days = [5, 6]  # For example, 5=Saturday, 6=Sunday
-    valid_start_time = (8, 0)  # 8 AM
-    valid_end_time = (18, 0)   # 6 PM
+    restricted_days = [5, 6]  # 5 = Saturday, 6 = Sunday
+    valid_start_hour = 8  # 8 AM
+    valid_end_hour = 18  # 6 PM (exclusive)
 
     existing_appointment = Appointment.objects.filter(user=request.user, date__gte=timezone.now().date()).first()
 
@@ -78,26 +78,31 @@ def book_appointment(request):
             appointment.user = request.user
 
             appointment_day = appointment.date.weekday()
-            appointment_time = (appointment.time.hour, appointment.time.minute)
+            appointment_hour = appointment.time.hour
+            appointment_minute = appointment.time.minute
 
-            if appointment.time.minute != 0:
-                messages.error(request, "You can only book appointments on the hour (e.g., 1:00, 2:00).")
+            # Ensure the time is at the start of the hour (e.g., 1:00, 2:00)
+            if appointment_minute != 0:
+                messages.error(request, "You can only book appointments at the start of the hour (e.g., 1:00, 2:00).")
                 return redirect('book_appointment')
-            
+
+            # Ensure appointments are not on restricted days
             if appointment_day in restricted_days:
                 messages.error(request, "You cannot book appointments on weekends.")
                 return redirect('book_appointment')
 
-            if not (valid_start_time <= appointment_time < valid_end_time):
+            # Ensure the hour is within the allowed range
+            if not (valid_start_hour <= appointment_hour < valid_end_hour):
                 messages.error(request, "You can only book appointments between 8 AM and 6 PM.")
                 return redirect('book_appointment')
 
+            # Save the appointment
             appointment.save()
             messages.success(request, "Your appointment has been booked successfully.")
             return redirect('appointment_list')
 
     return render(request, 'myapp/book_appointment.html', {'form': form})
-
+    
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user).order_by('date')
