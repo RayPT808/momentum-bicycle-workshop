@@ -25,7 +25,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
     '8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
-    '8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io'
+    '8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io',
+    '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
