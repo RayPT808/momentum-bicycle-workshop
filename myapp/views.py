@@ -189,10 +189,22 @@ def export_appointments(request):
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="appointments.csv"'
     writer = csv.writer(response)
-    writer.writerow(['Date', 'Notes'])
+    
+    # Update column headers based on the actual fields in the model
+    writer.writerow(['User', 'Date', 'Time', 'Description', 'Photo'])  # Column headers to reflect available fields
+    
     for appointment in appointments:
-        writer.writerow([appointment.date, appointment.notes])
+        # Write the available fields (remove the `notes` field)
+        writer.writerow([
+            appointment.user.username,  # User
+            appointment.date,           # Date
+            appointment.time,           # Time
+            appointment.description,     # Description (equivalent of notes)
+            appointment.photo.url if appointment.photo else ''  # Photo URL, or empty string if no photo
+        ])
+    
     return response
+
 
 class OwnerDashboardView(LoginRequiredMixin, TemplateView):
     def get(self, request):
