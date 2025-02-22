@@ -9,6 +9,7 @@ class Appointment(models.Model):
     time = models.TimeField()
     description = models.TextField(blank=True)  # Allowing blank descriptions
     photo = models.ImageField(upload_to='photos/', blank=True, null=True)
+    completed = models.BooleanField(default=False)
 
     def clean(self):
         # Ensure the appointment date and time are not None

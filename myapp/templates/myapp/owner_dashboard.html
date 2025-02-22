@@ -4,6 +4,7 @@
 
 {% block content %}
 <h2>Booked Appointments</h2>
+
 <form method="GET" action="{% url 'owner_dashboard' %}">
     <input type="text" name="search" placeholder="Search notes...">
     <input type="date" name="date">
@@ -31,6 +32,16 @@
                     {% csrf_token %}
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
+
+                {% if not appointment.completed %}
+                <!-- Button to mark appointment as completed -->
+                <form method="POST" action="{% url 'mark_completed' appointment.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Mark as Completed</button>
+                </form>
+                {% else %}
+                <span>Completed</span>
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

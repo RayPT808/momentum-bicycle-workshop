@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Appointment
+from django.core.mail import send_mail
 from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -207,13 +208,43 @@ def export_appointments(request):
 
 
 class OwnerDashboardView(LoginRequiredMixin, TemplateView):
+    template_name = 'myapp/owner_dashboard.html'
+    
     def get(self, request):
         appointments = Appointment.objects.all()
+        
+        # Apply date filter if present
         date_filter = request.GET.get('date')
         if date_filter:
             appointments = appointments.filter(date__date=date_filter)
+        
+        # Apply search filter if present
         search_query = request.GET.get('search')
         if search_query:
-            appointments = appointments.filter(notes__icontains=search_query)
+            appointments = appointments.filter(description__icontains=search_query)
+        
+        # Include the list of appointments in the context
+        return render(request, self.template_name, {'appointments': appointments})
 
-        return render(request, 'myapp/owner_dashboard.html', {'appointments': appointments})
+    def post(self, request, appointment_id):
+        """Mark appointment as completed"""
+        # Get the appointment by ID
+        appointment = Appointment.objects.get(id=appointment_id)
+        
+        # Mark the appointment as completed
+        appointment.completed = True
+        appointment.save()
+
+        # Send notification email to the user
+        send_mail(
+            subject="Your Bicycle Repair Appointment is Completed",
+            message=f"Dear {appointment.user.username},\n\nYour bicycle repair appointment on {appointment.date} at {appointment.time} has been completed. Please come by to collect your bicycle.\n\nThank you!",
+            from_email='shop@example.com',
+            recipient_list=[appointment.user.email],
+        )
+
+        # Provide feedback to the owner
+        messages.success(request, f"Appointment for {appointment.user.username} marked as completed and user notified.")
+        
+        # Redirect back to the owner dashboard
+        return redirect('owner_dashboard')
