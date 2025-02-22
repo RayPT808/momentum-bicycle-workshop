@@ -224,7 +224,8 @@ class OwnerDashboardView(LoginRequiredMixin, TemplateView):
         # Apply date filter if present
         date_filter = request.GET.get('date')
         if date_filter:
-            appointments = appointments.filter(date__date=date_filter)
+            appointments = appointments.filter(date=date_filter)
+
         
         # Apply search filter if present
         search_query = request.GET.get('search')
@@ -248,8 +249,10 @@ def mark_appointment_completed(request, appointment_id):
     user_notification = Notification.objects.create(
     user=appointment.user,
     message=f"Your appointment on {appointment.date} at {appointment.time} has been marked as completed.",
-    read=False  # This means the notification hasn't been viewed yet
+    read=False,  # This means the notification hasn't been viewed yet
+  
 )
+    print(f"Notification created: {user_notification}")
 
     # Add a success message for the shop owner
     messages.success(request, f"Your appointment on {appointment.date} at {appointment.time} has been marked as completed.")

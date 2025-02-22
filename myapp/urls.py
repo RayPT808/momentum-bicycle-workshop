@@ -4,6 +4,7 @@ from .views import home, about, register, login_view, book_appointment, appointm
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     path('', home, name='home'),
     path('about/', about, name='about'),
