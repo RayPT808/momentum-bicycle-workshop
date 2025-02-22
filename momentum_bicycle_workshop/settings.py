@@ -91,6 +91,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'momentum_bicycle_workshop.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_HOST = 'smtp.gmail.com'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+#EMAIL_USE_SSL = False
+#EMAIL_HOST_USER = 'your-email@gmail.com'  
+#EMAIL_HOST_PASSWORD = 'your-app-password'
+#DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
 
 
 # Database
@@ -164,3 +174,4 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',  # Match this to Bootstrap's "alert-danger" class
 }
+

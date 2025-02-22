@@ -25,8 +25,11 @@
         {% for appointment in appointments %}
         <tr>
             <td>{{ appointment.date }}</td>
-            <td>{{ appointment.notes }}</td>
+            <td>{{ appointment.description }}</td> <!-- Ensure correct field name for 'notes' -->
             <td>
+                <!-- Show completed status for debugging -->
+                <span>{{ appointment.completed }}</span>
+
                 <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-warning">Edit</a>
                 <form method="POST" action="{% url 'delete_appointment' appointment.id %}" style="display:inline;">
                     {% csrf_token %}
