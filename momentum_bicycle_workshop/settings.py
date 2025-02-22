@@ -91,13 +91,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'momentum_bicycle_workshop.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #EMAIL_HOST = 'smtp.gmail.com'
 #EMAIL_PORT = 587
 #EMAIL_USE_TLS = True
 #EMAIL_USE_SSL = False
-#EMAIL_HOST_USER = 'your-email@gmail.com'  
-#EMAIL_HOST_PASSWORD = 'your-app-password'
+#EMAIL_HOST_USER = ''  
+#EMAIL_HOST_PASSWORD = ''
 #DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 

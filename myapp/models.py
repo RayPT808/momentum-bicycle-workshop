@@ -3,6 +3,16 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.exceptions import ValidationError
 
+class Notification(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.TextField()
+    read = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.message
+
+
 class Appointment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Associate the appointment with a user
     date = models.DateField()
@@ -10,6 +20,7 @@ class Appointment(models.Model):
     description = models.TextField(blank=True)  # Allowing blank descriptions
     photo = models.ImageField(upload_to='photos/', blank=True, null=True)
     completed = models.BooleanField(default=False)
+    notified = models.BooleanField(default=False)
 
     def clean(self):
         # Ensure the appointment date and time are not None

@@ -13,6 +13,7 @@ urlpatterns = [
     path('owner/edit/<int:id>/', views.edit_appointment, name='edit_appointment'),
     path('owner/delete/<int:id>/', views.delete_appointment, name='delete_appointment'),
     path('logout/', CustomLogoutView.as_view(), name='logout'),
+    path('dashboard/', views.user_dashboard, name='user_dashboard'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('owner/appointments/mark_completed/<int:appointment_id>/', views.mark_appointment_completed, name='mark_completed'),
 ]

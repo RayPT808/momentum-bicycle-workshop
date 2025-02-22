@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from myapp.models import Appointment
+from myapp.models import Appointment, Notification
 from django.core.mail import send_mail
 from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
@@ -57,6 +57,14 @@ def register(request):
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+@login_required
+def user_dashboard(request):
+    # Get the notifications for the logged-in user
+    notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
+    
+    # Render the user dashboard template with notifications
+    return render(request, 'user_dashboard.html', {'notifications': notifications})
 
 @login_required
 def book_appointment(request):
@@ -229,16 +237,28 @@ class OwnerDashboardView(LoginRequiredMixin, TemplateView):
 # New view for marking an appointment as completed
 @login_required
 def mark_appointment_completed(request, appointment_id):
+    print(f"Marking appointment {appointment_id} as completed.")
     appointment = get_object_or_404(Appointment, id=appointment_id)
 
     # Mark the appointment as completed
     appointment.completed = True
+    appointment.notified = True 
     appointment.save()
 
+    user_notification = Notification.objects.create(
+    user=appointment.user,
+    message=f"Your appointment on {appointment.date} at {appointment.time} has been marked as completed.",
+    read=False  # This means the notification hasn't been viewed yet
+)
+
+    # Add a success message for the shop owner
+    messages.success(request, f"Your appointment on {appointment.date} at {appointment.time} has been marked as completed.")
+
     # Send notification email to the user
+    #print(f"Sending email to {appointment.user.email}")
     #send_mail(
     #    subject="Your Bicycle Repair Appointment is Completed",
-    #    message=f"Dear {appointment.user.username},\n\nYour bicycle repair appointment on {appointment.date} at {appointment.time} has been completed. Please come by to collect your bicycle.\n\nThank you!",
+    #   message=f"Dear {appointment.user.username},\n\nYour bicycle repair appointment on {appointment.date} at {appointment.time} has been completed. Please come by to collect your bicycle.\n\nThank you!",
     #    from_email='shop@example.com',
     #    recipient_list=[appointment.user.email],
     #)
