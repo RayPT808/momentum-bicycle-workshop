@@ -62,6 +62,10 @@ def profile(request):
 def user_dashboard(request):
     # Get the notifications for the logged-in user
     notifications = Notification.objects.filter(user=request.user).order_by('-created_at')
+
+    # Debugging log
+    print(f"Notifications for {request.user.username}: {notifications}")
+
     
     # Render the user dashboard template with notifications
     return render(request, 'user_dashboard.html', {'notifications': notifications})
