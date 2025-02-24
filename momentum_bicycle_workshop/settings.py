@@ -19,7 +19,7 @@ load_dotenv()  # Load environment variables from .env
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-insecure-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'momentum-bicycle-workshop-22fb69372d3e.herokuapp.com',
@@ -160,6 +160,9 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
