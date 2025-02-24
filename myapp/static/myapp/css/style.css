@@ -1,6 +1,6 @@
 <style>
     .home-page {
-        background-image: url("{% static 'myapp/images/background.jpg' %}");
+        background-image: url("{% static 'myapp/images/about-background.jpg' %}");
     }
     .about-page, .register-page {
         background-image: url("{% static 'myapp/images/about-background.jpg' %}");

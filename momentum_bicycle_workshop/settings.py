@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,7 +20,7 @@ load_dotenv()  # Load environment variables from .env
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-insecure-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'momentum-bicycle-workshop-22fb69372d3e.herokuapp.com',
@@ -28,7 +29,8 @@ ALLOWED_HOSTS = [
     'raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
     '8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
     '8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io',
-    '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io'
+    '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io',
+    '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu118.gitpod.io'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -154,12 +156,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # For project-wide static files
-    os.path.join(BASE_DIR, 'myapp/static'),  # Optional: include your app's static directory
+    os.path.join(BASE_DIR, 'static'),  
 ]
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
