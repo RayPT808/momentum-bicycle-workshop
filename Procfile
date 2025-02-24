@@ -1,1 +1,2 @@
-web: gunicorn momentum_bicycle_workshop.wsgi 
+web: gunicorn momentum_bicycle_workshop.wsgi:application
+
