@@ -20,7 +20,7 @@ load_dotenv()  # Load environment variables from .env
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-insecure-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'momentum-bicycle-workshop-22fb69372d3e.herokuapp.com',
@@ -178,4 +178,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',  # Match this to Bootstrap's "alert-danger" class
 }
+
+X_FRAME_OPTIONS = 'ALLOWALL'
 
