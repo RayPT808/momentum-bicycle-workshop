@@ -68,7 +68,7 @@ class LogoutTest(TestCase):
         self.assertNotIn('_auth_user_id', self.client.session)
 
 
-
+# Test for booking an appointment
 class AppointmentBookingTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='testpass')
@@ -92,3 +92,28 @@ class AppointmentBookingTest(TestCase):
 
         # Check if the appointment was successfully created
         self.assertEqual(Appointment.objects.count(), 1)
+
+
+class DeleteAppointmentTest(TestCase):
+    def setUp(self):
+        # Create a user
+        self.user = User.objects.create_user(username="testuser", password="password")
+        self.client.login(username="testuser", password="password")
+
+        # Create an appointment for the user
+        self.appointment = Appointment.objects.create(
+            user=self.user,
+            date=timezone.now().date(),
+            time=timezone.now().time(),
+            description="Test appointment"
+        )
+
+    def test_cancel_appointment(self):
+        """Test if a user can cancel their appointment successfully"""
+        response = self.client.post(reverse('delete_appointment', args=[self.appointment.id]))
+        
+        # Check if the appointment was deleted
+        self.assertEqual(Appointment.objects.count(), 0)
+
+        # Check if the user is redirected after cancellation
+        self.assertEqual(response.status_code, 302)  # Redirect status
