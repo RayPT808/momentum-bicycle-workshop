@@ -75,7 +75,7 @@ class AppointmentBookingTest(TestCase):
         self.client.login(username='testuser', password='testpass')
 
     def test_appointment_booking(self):
-        future_date = (timezone.now() + timedelta(days=1)).date()  # Set the appointment for tomorrow
+        future_date = (timezone.now() + timedelta(days=1)).date()  
         
         data = {
             'date': future_date.strftime('%Y-%m-%d'),  # Ensure it's a future date
@@ -94,6 +94,7 @@ class AppointmentBookingTest(TestCase):
         self.assertEqual(Appointment.objects.count(), 1)
 
 
+# Test for deleting appointment
 class DeleteAppointmentTest(TestCase):
     def setUp(self):
         # Create a user
