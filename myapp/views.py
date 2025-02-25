@@ -13,6 +13,7 @@ from django.views.generic import TemplateView, View  # Import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 import csv
 import logging
+from django.template.loader import get_template
 
 logger = logging.getLogger(__name__)
 
@@ -38,10 +39,22 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 def home(request):
-    return render(request, 'myapp/home.html')
+    template_path = "myapp/home.html"
+    try:
+        get_template(template_path)  # Raises an error if not found
+        return render(request, template_path)
+    except Exception as e:
+        return HttpResponse(f"❌ Template error: {e}")
+    #return render(request, 'myapp/home.html')
 
 def about(request):
-    return render(request, 'myapp/about.html')
+    template_path = "myapp/about.html"
+    try:
+        get_template(template_path)
+        return render(request, template_path)
+    except Exception as e:
+        return HttpResponse(f"❌ Template error: {e}")
+    #return render(request, 'myapp/about.html')
 
 def register(request):
     if request.method == 'POST':

@@ -38,7 +38,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://momentumbicycl-8ufp2aa6k6a.ws-eu117.gitpod.io',
     'https://8000-raypt808-momentumbicycl-oy02jiub9mw.ws-eu117.gitpod.io',
     'https://8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io',
-    'https://8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io'
+    'https://8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io',
+    'https://8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu118.gitpod.io'
 ]
 
 
