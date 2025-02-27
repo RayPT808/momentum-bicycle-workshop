@@ -1,23 +1,37 @@
-<style>
-    .home-page {
-        background-image: url("{% static 'myapp/images/about-background.jpg' %}");
-    }
-    .about-page, .register-page {
-        background-image: url("{% static 'myapp/images/about-background.jpg' %}");
-    }
-
-    
-</style>
-
-/* About page style */
-
-
-
-.about-page h1 {
-    text-align: center !important; 
-    margin: 40px 0 !important; /* Increased margin for more space below the title */
+/* Home Page Styles */
+.home-page {
+    background-image: url("{% static 'myapp/images/about-background.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
+/* Centering the About Us title and adjusting spacing */
+.home-text {
+    text-align: center;
+    margin-top: 50px;
+    /* Moves title & content slightly lower */
+}
+
+.home-text h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Styling the paragraph for better readability */
+.paragraph-move {
+    margin-top: 180px;
+}
+
+/* Contact & Register Page */
+.contact-page,
+.register-page {
+    background-image: url("{% static 'myapp/images/about-background.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Footer Styles */
 .footer-info {
     display: flex;
     justify-content: space-between;
@@ -31,6 +45,7 @@
     box-sizing: border-box;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .footer-info {
         flex-direction: column;

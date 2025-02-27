@@ -21,7 +21,8 @@ ALLOWED_HOSTS = [
     '8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io',
     '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io',
     '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu118.gitpod.io',
-    '8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io'
+    '8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io',
+    '8080-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io'
 
 ]
 
@@ -123,10 +124,9 @@ USE_TZ = True
 
 # Static files 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'myapp/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

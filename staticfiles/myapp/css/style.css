@@ -1,7 +1,55 @@
-body {
-    background-image: url('../images/about-background.jpg'); /* Adjust the path if necessary */
-    background-size: cover; /* Makes sure the image covers the entire background */
-    background-position: center; /* Centers the background image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    min-height: 100vh; /* Ensures the background covers the entire viewport height */
+/* Home Page Styles */
+.home-page {
+    background-image: url("../images/about-background.jpg");
+    /* Adjust path if needed */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Centering the About Us title and adjusting spacing */
+.home-text {
+    text-align: center;
+    margin-top: 50px;
+    /* Moves title & content slightly lower */
+}
+
+.home-text h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Styling the paragraph for better readability */
+.paragraph-move {
+    margin-top: 180px;
+}
+
+/* Contact & Register Page */
+.contact-page,
+.register-page {
+    background-image: url("../images/about-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Footer Styles */
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.footer-info .address,
+.footer-info .contact-details {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-info {
+        flex-direction: column;
+        text-align: center;
+    }
 }
