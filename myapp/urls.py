@@ -1,13 +1,13 @@
 from django.urls import path
 from . import views
-from .views import home, about, register, login_view, book_appointment, appointment_list, appointment_events, profile, delete_appointment, modify_appointment
+from .views import home, contact, register, login_view, book_appointment, appointment_list, appointment_events, profile, delete_appointment, modify_appointment
 from django.conf import settings
 from django.conf.urls.static import static
 
 
 urlpatterns = [
     path('', home, name='home'),
-    path('about/', about, name='about'),
+    path('contact/', contact, name='contact'),
     path('register/', register, name='register'),
     path('login/', login_view, name='login'),
     path('profile/', profile, name='profile'),

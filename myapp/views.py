@@ -9,7 +9,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
-from django.views.generic import TemplateView, View  # Import View
+from django.views.generic import TemplateView, View  #
 from django.contrib.auth.mixins import LoginRequiredMixin
 import csv
 import logging
@@ -47,14 +47,14 @@ def home(request):
         return HttpResponse(f"[X] Template error: {e}")
     # return render(request, 'myapp/home.html')
 
-def about(request):
-    template_path = "myapp/about.html"
+def contact(request):
+    template_path = "myapp/contact.html"
     try:
         get_template(template_path)
         return render(request, template_path)
     except Exception as e:
         return HttpResponse(f"[X] Template error: {e}")
-    # return render(request, 'myapp/about.html')
+    # return render(request, 'myapp/contact.html')
     
 def register(request):
     if request.method == 'POST':
@@ -274,15 +274,7 @@ def mark_appointment_completed(request, appointment_id):
     # Add a success message for the shop owner
     messages.success(request, f"Your appointment on {appointment.date} at {appointment.time} has been marked as completed.")
 
-    # Send notification email to the user
-    #print(f"Sending email to {appointment.user.email}")
-    #send_mail(
-    #    subject="Your Bicycle Repair Appointment is Completed",
-    #   message=f"Dear {appointment.user.username},\n\nYour bicycle repair appointment on {appointment.date} at {appointment.time} has been completed. Please come by to collect your bicycle.\n\nThank you!",
-    #    from_email='shop@example.com',
-    #    recipient_list=[appointment.user.email],
-    #)
-
+   
     # Provide feedback to the owner
     messages.success(request, f"Appointment for {appointment.user.username} marked as completed and user notified.")
 

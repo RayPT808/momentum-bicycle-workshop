@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="{% url 'home' %}">Momentum Bicycle Workshop</a> <!-- Logo link -->
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 
             {% if user.is_authenticated %}
             <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a></li>
