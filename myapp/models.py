@@ -36,5 +36,5 @@ class Appointment(models.Model):
         return f"{self.user.username} - {self.date} at {self.time}"
     
     
-    class Meta:  # This should be properly indented within the model
+    class Meta:  
         unique_together = ('user', 'date')  # or ('user', 'date', 'time') if you want to prevent double booking at the same time

@@ -44,8 +44,8 @@ def home(request):
         get_template(template_path)  # Raises an error if not found
         return render(request, template_path)
     except Exception as e:
-        return HttpResponse(f"❌ Template error: {e}")
-    #return render(request, 'myapp/home.html')
+        return HttpResponse(f"[X] Template error: {e}")
+    # return render(request, 'myapp/home.html')
 
 def about(request):
     template_path = "myapp/about.html"
@@ -53,9 +53,9 @@ def about(request):
         get_template(template_path)
         return render(request, template_path)
     except Exception as e:
-        return HttpResponse(f"❌ Template error: {e}")
-    #return render(request, 'myapp/about.html')
-
+        return HttpResponse(f"[X] Template error: {e}")
+    # return render(request, 'myapp/about.html')
+    
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
