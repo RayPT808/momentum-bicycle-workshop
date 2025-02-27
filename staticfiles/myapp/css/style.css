@@ -1,7 +1,6 @@
 /* Home Page Styles */
 .home-page {
-    background-image: url("../images/about-background.jpg");
-    /* Adjust path if needed */
+    background-image: url("{% static 'images/about-background.jpg' %}");
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -27,7 +26,7 @@
 /* Contact & Register Page */
 .contact-page,
 .register-page {
-    background-image: url("../images/about-background.jpg");
+    background-image: url("{% static 'myapp/images/about-background.jpg' %}");
     background-size: cover;
     background-repeat: no-repeat;
 }
