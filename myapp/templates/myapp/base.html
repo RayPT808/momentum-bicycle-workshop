@@ -20,8 +20,8 @@
             background-repeat: no-repeat;
         }
 
-        /* Background for the about page */
-        body.about-page,
+        /* Background for the contact page */
+        body.contact-page,
         body.register-page {
             background-image: url("{% static 'images/about-background.jpg' %}");
             background-size: cover;
@@ -45,7 +45,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a>

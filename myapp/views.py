@@ -38,24 +38,27 @@ def login_view(request):
     
     return render(request, 'registration/login.html', {'form': form})
 
+
 def home(request):
     template_path = "myapp/home.html"
     try:
         get_template(template_path)  # Raises an error if not found
-        return render(request, template_path)
+        return render(request, template_path, {'page_title': 'Home'})
     except Exception as e:
-        return HttpResponse(f"[X] Template error: {e}")
-    # return render(request, 'myapp/home.html')
+        return HttpResponse(f"❌ Template error: {e}")
+
 
 def contact(request):
     template_path = "myapp/contact.html"
     try:
         get_template(template_path)
-        return render(request, template_path)
+        return render(request, template_path, {'page_title': 'Contact'})
     except Exception as e:
-        return HttpResponse(f"[X] Template error: {e}")
-    # return render(request, 'myapp/contact.html')
+        return HttpResponse(f"❌ Template error: {e}")
+
+
     
+
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
