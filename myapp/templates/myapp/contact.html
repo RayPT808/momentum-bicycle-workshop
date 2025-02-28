@@ -6,10 +6,48 @@
 {% block body_class %}contact-page{% endblock %}
 
 {% block content %}
+<style>
+    .about-page {
+        text-align: center;
+        /* Centers text horizontally */
+        position: absolute;
+        top: 50%;
+        /* Adjust to move up/down */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+    }
+
+    .footer-info {
+        display: flex;
+        flex-direction: column;
+        /* Stack elements vertically */
+        align-items: center;
+        /* Centers them */
+        gap: 20px;
+        /* Adds spacing between sections */
+    }
+
+    .download-link a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        /* Bootstrap primary color */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .download-link a:hover {
+        background-color: #0056b3;
+    }
+</style>
+
 <div class="about-page">
     <h1>Contact Us</h1>
 
-    
+
     <div class="footer-info">
         <div class="address">
             <h5>Address</h5>
