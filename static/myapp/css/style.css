@@ -1,11 +1,116 @@
+/* Fixed Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+    /* Ensure navbar is always on top */
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Optional: semi-transparent */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Optional: shadow */
+}
+
+/* Apply padding-top to the body for all pages to avoid overlap */
 body {
-    background-image: url("{% static 'images/about-background.jpg' %}");
+    padding-top: 0px;
+    /* Adjust this value to match the navbar height */
+    background-image: url("../images/about-background.jpg");
     background-size: cover;
-    /* Makes sure the image covers the entire background */
     background-position: center;
-    /* Centers the background image */
     background-repeat: no-repeat;
-    /* Prevents the image from repeating */
     min-height: 100vh;
-    /* Ensures the background covers the entire viewport height */
+}
+
+/* Home Page Styles */
+.home-page {
+    background-image: url("../images/about-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 0px;
+    /* Adjust if needed */
+}
+
+/* Centering the About Us title and adjusting spacing */
+.home-text {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.home-text h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Styling the paragraph for better readability */
+.paragraph-move {
+    margin-top: 180px;
+}
+
+/* Container for Contact Us Page */
+.contact-container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    /* Center the content */
+}
+
+/* Title positioning */
+.contact-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    /* Space between title and address */
+}
+
+/* Address and Contact Details Section */
+.contact-details {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.contact-details h5 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.contact-details p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    /* Space between the paragraphs */
+}
+
+/* Button Styling */
+.download-link {
+    margin-top: 30px;
+    /* Space between the last contact detail and the button */
+}
+
+.download-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.download-link a:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 20px;
+        /* Adjust padding for smaller screens */
+    }
+
+    .contact-details {
+        margin-top: 30px;
+    }
 }

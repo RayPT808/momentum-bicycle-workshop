@@ -1,6 +1,14 @@
+body {
+    background-image: url("../images/about-background.jpg"); /* Use relative path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
 /* Home Page Styles */
 .home-page {
-    background-image: url("{% static 'images/about-background.jpg' %}");
+    background-image: url("../images/about-background.jpg"); /* Relative path */
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -9,7 +17,6 @@
 .home-text {
     text-align: center;
     margin-top: 50px;
-    /* Moves title & content slightly lower */
 }
 
 .home-text h1 {
@@ -26,16 +33,25 @@
 /* Contact & Register Page */
 .contact-page,
 .register-page {
-    background-image: url("{% static 'myapp/images/about-background.jpg' %}");
+    background-image: url("../images/about-background.jpg"); /* Relative path */
     background-size: cover;
     background-repeat: no-repeat;
+    padding-top: 20px; /* Adjust this value to move content up */
 }
 
-/* Footer Styles */
+/* Contact Us Text Section */
+.contact-page .contact-text, 
+.register-page .contact-text {
+    margin-top: 0; /* Reduces top margin */
+    padding-top: 20px; /* Adds padding if needed for spacing */
+}
+
+/* Address and Download Price List */
 .footer-info {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 0; /* Reduces the space at the top */
+    padding-top: 20px; /* Adjust if needed */
 }
 
 .footer-info .address,
@@ -43,6 +59,7 @@
     flex: 1;
     padding: 10px;
     box-sizing: border-box;
+    margin-top: 0; /* Reduces the top margin */
 }
 
 /* Responsive Design */
@@ -50,5 +67,9 @@
     .footer-info {
         flex-direction: column;
         text-align: center;
+    }
+    .footer-info .address,
+    .footer-info .contact-details {
+        margin-top: 10px; /* Adjust for vertical spacing */
     }
 }

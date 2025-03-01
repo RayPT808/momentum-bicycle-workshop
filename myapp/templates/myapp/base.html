@@ -9,7 +9,7 @@
     <title>{% block title %}My Website{% endblock %} </title>
 
     <!-- External CSS for your app -->
-    <link rel="stylesheet" href="{% static 'myapp/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -19,26 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
 
-    <style>
-        /* Inline styling for background images (keep it minimal here) */
-        body.home-page {
-            background-image: url("{% static 'images/about-background.jpg' %}");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        body.contact-page,
-        body.register-page {
-            background-image: url("{% static 'images/about-background.jpg' %}");
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        .paragraph-move {
-            margin-top: 180px;
-            /* Adjust this value as needed */
-        }
-    </style>
+   
 </head>
 
 <body class="{% block body_class %}{% endblock %}">

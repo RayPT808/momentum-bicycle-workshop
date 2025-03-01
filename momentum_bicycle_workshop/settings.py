@@ -10,7 +10,7 @@ load_dotenv()  # Load environment variables from .env
 
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default-insecure-key')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'momentum-bicycle-workshop-22fb69372d3e.herokuapp.com',
