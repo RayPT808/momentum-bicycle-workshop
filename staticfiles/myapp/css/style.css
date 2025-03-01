@@ -1,5 +1,23 @@
+/* Fixed Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+    /* Ensure navbar is always on top */
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Optional: semi-transparent */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Optional: shadow */
+}
+
+/* Apply padding-top to the body for all pages to avoid overlap */
 body {
-    background-image: url("../images/about-background.jpg"); /* Use relative path */
+    padding-top: 0px;
+    /* Adjust this value to match the navbar height */
+    background-image: url("../images/about-background.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -8,9 +26,11 @@ body {
 
 /* Home Page Styles */
 .home-page {
-    background-image: url("../images/about-background.jpg"); /* Relative path */
+    background-image: url("../images/about-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    padding-top: 0px;
+    /* Adjust if needed */
 }
 
 /* Centering the About Us title and adjusting spacing */
@@ -30,46 +50,67 @@ body {
     margin-top: 180px;
 }
 
-/* Contact & Register Page */
-.contact-page,
-.register-page {
-    background-image: url("../images/about-background.jpg"); /* Relative path */
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding-top: 20px; /* Adjust this value to move content up */
+/* Container for Contact Us Page */
+.contact-container {
+    text-align: center;
+    padding: 40px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    /* Center the content */
 }
 
-/* Contact Us Text Section */
-.contact-page .contact-text, 
-.register-page .contact-text {
-    margin-top: 0; /* Reduces top margin */
-    padding-top: 20px; /* Adds padding if needed for spacing */
+/* Title positioning */
+.contact-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    /* Space between title and address */
 }
 
-/* Address and Download Price List */
-.footer-info {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0; /* Reduces the space at the top */
-    padding-top: 20px; /* Adjust if needed */
+/* Address and Contact Details Section */
+.contact-details {
+    text-align: center;
+    margin-top: 40px;
 }
 
-.footer-info .address,
-.footer-info .contact-details {
-    flex: 1;
-    padding: 10px;
-    box-sizing: border-box;
-    margin-top: 0; /* Reduces the top margin */
+.contact-details h5 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.contact-details p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    /* Space between the paragraphs */
+}
+
+/* Button Styling */
+.download-link {
+    margin-top: 30px;
+    /* Space between the last contact detail and the button */
+}
+
+.download-link a {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.download-link a:hover {
+    background-color: #0056b3;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .footer-info {
-        flex-direction: column;
-        text-align: center;
+    .contact-container {
+        padding: 20px;
+        /* Adjust padding for smaller screens */
     }
-    .footer-info .address,
-    .footer-info .contact-details {
-        margin-top: 10px; /* Adjust for vertical spacing */
+
+    .contact-details {
+        margin-top: 30px;
     }
 }
