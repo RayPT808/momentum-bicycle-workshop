@@ -46,7 +46,7 @@ class AppointmentForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['phone_number']
+        fields = ['phone_number', ]
 
 class UserForm(forms.ModelForm):
     class Meta:

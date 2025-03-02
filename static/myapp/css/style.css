@@ -114,3 +114,38 @@ body {
         margin-top: 30px;
     }
 }
+
+/* Ensure form labels and fields are aligned */
+form .row {
+    margin-bottom: 15px;
+    /* Space between each row */
+}
+
+form .col-md-3 {
+    text-align: left;
+    /* Align labels to the left */
+    padding-right: 15px;
+    /* Space between label and field */
+}
+
+form .col-md-9 input,
+form .col-md-9 textarea,
+form .col-md-9 select {
+    width: 100%;
+    /* Make sure input fields take the full available width */
+}
+
+form .col-md-9 {
+    padding-left: 0;
+    /* Remove left padding to align fields */
+}
+
+form label {
+    font-weight: bold;
+    /* Make labels bold */
+}
+
+form button {
+    margin-top: 20px;
+    /* Space above the button */
+}

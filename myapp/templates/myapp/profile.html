@@ -8,18 +8,60 @@
         {% csrf_token %}
         <fieldset>
             <legend>Personal Information</legend>
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
+
+            <!-- Username (displayed automatically) -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="id_username">Username</label>
+                </div>
+                <div class="col-md-9">
+                    <p>{{ username }}</p> <!-- Display username -->
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="id_email">Email</label>
+                </div>
+                <div class="col-md-9">
+                    {{ user_form.email }}
+                </div>
+            </div>
+
+            <!-- First Name -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="id_first_name">First Name</label>
+                </div>
+                <div class="col-md-9">
+                    {{ user_form.first_name }}
+                </div>
+            </div>
+
+            <!-- Last Name -->
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="id_last_name">Last Name</label>
+                </div>
+                <div class="col-md-9">
+                    {{ user_form.last_name }}
+                </div>
+            </div>
+
+           
+
         </fieldset>
-        <button type="submit">Save Changes</button>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
 
     <h3>Past Completed Appointments</h3>
     <ul>
         {% for appointment in completed_appointments %}
-            <li>{{ appointment.date }} - {{ appointment.service_type }}</li>
+        <li>{{ appointment.date }} - {{ appointment.service_type }}</li>
         {% empty %}
-            <li>No completed appointments.</li>
+        <li>No completed appointments.</li>
         {% endfor %}
     </ul>
 </div>

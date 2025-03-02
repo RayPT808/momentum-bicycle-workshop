@@ -97,7 +97,8 @@ def profile_view(request):
     return render(request, 'myapp/profile.html', {
         'user_form': user_form,
         'profile_form': profile_form,
-        'completed_appointments': completed_appointments
+        'completed_appointments': completed_appointments,
+        'username': user.username
     })
 
 
