@@ -26,28 +26,34 @@ body {
 
 /* Home Page Styles */
 .home-page {
-    background-image: url("../images/about-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     padding-top: 0px;
     /* Adjust if needed */
 }
 
-/* Centering the About Us title and adjusting spacing */
+/* Home Text */
 .home-text {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 50px; /* Adjust this value as needed */
 }
 
-.home-text h1 {
-    text-align: center;
+.home-text h1 { 
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
+/* Centering the About Us title and adjusting spacing */
+.contact-page p {
+    text-align: center;
+    margin-top: 50px;
+    padding: 0 20px;
+}
+
 /* Styling the paragraph for better readability */
 .paragraph-move {
-    margin-top: 130px;
+    margin-top: 30px;
+    font-size: 1rem;
 }
 
 /* Container for Contact Us Page */
@@ -66,31 +72,67 @@ body {
     /* Space between title and address */
 }
 
-/* Address and Contact Details Section */
-.contact-details {
-    text-align: center;
-    margin-top: 40px;
+.contact-page {
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 0px;
 }
 
-.contact-details h5 {
+/* Contact Container */
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Contact Us Title */
+.contact-container h1 {
+    font-size: 2.5rem;
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Address Section */
+.address {
+    margin-bottom: 20px;
+}
+
+.address h5 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.address p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Contact Info Section */
+.contact-info {
+    margin-bottom: 20px;
+}
+
+.contact-info h5 {
     font-size: 1.25rem;
     margin-bottom: 10px;
 }
 
-.contact-details p {
+.contact-info p {
     font-size: 1rem;
-    margin-bottom: 20px;
-    /* Space between the paragraphs */
+    margin: 5px 0;
 }
 
-/* Button Styling */
+/* Button Section */
 .download-link {
-    margin-top: 30px;
-    /* Space between the last contact detail and the button */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .download-link a {
-    display: inline-block;
     padding: 10px 20px;
     font-size: 1rem;
     background-color: #007bff;
@@ -103,15 +145,25 @@ body {
     background-color: #0056b3;
 }
 
-/* Responsive Design */
+/* Ensure Button is at least halfway down the page */
+.contact-page::after {
+    content: "";
+    flex-grow: 1;
+}
+
+/* Optional: responsive design for smaller screens */
 @media (max-width: 768px) {
     .contact-container {
-        padding: 20px;
-        /* Adjust padding for smaller screens */
+        padding: 15px;
+    }
+    
+    .contact-container h1 {
+        font-size: 2rem;
     }
 
-    .contact-details {
-        margin-top: 30px;
+    .address h5,
+    .contact-info h5 {
+        font-size: 1.2rem;
     }
 }
 
@@ -150,6 +202,7 @@ form button {
     /* Space above the button */
 }
 
+/* Navbar and Item Alignment */
 .navbar-nav {
     display: flex;
     justify-content: flex-start;
