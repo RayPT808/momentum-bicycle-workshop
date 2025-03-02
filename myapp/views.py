@@ -13,9 +13,14 @@ from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
 from django.views.generic import TemplateView, View  #
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.timezone import now
 import csv
 import logging
 from django.template.loader import get_template
+
+def some_view(request):
+    return render(request, 'myapp/base.html', {'timestamp': now().timestamp()})
+    
 
 logger = logging.getLogger(__name__)
 
