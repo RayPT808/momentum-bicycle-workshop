@@ -1,13 +1,26 @@
-<!-- templates/profile.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-</head>
-<body>
-    <h1>Welcome, {{ user.username }}!</h1>
-    <p>This is your profile page.</p>
-</body>
-</html>
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Profile</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Personal Information</legend>
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+        </fieldset>
+        <button type="submit">Save Changes</button>
+    </form>
+
+    <h3>Past Completed Appointments</h3>
+    <ul>
+        {% for appointment in completed_appointments %}
+            <li>{{ appointment.date }} - {{ appointment.service_type }}</li>
+        {% empty %}
+            <li>No completed appointments.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

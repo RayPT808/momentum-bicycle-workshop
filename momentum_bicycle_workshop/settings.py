@@ -22,7 +22,8 @@ ALLOWED_HOSTS = [
     '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io',
     '8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu118.gitpod.io',
     '8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io',
-    '8080-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io'
+    '8080-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io',
+    '8000-raypt808-momentumbicycl-9m2enmotpf7.ws-eu118.gitpod.io',
 
 ]
 
@@ -34,7 +35,8 @@ CSRF_TRUSTED_ORIGINS = [
     'https://8000-raypt808-momentumbicycl-txfjkc4i0ss.ws-eu117.gitpod.io',
     'https://8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu117.gitpod.io',
     'https://8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu118.gitpod.io',
-    'https://8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io'
+    'https://8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io',
+    'https://8000-raypt808-momentumbicycl-9m2enmotpf7.ws-eu118.gitpod.io'
 ]
 
 

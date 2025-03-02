@@ -21,7 +21,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
 
-   
+
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
@@ -39,6 +39,9 @@
                     {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a>
                     </li>
+
+                    <!-- Profile Page Link -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
 
                     <!-- Logout form with POST method -->
                     <li class="nav-item">

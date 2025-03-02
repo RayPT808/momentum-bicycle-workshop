@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import Appointment, Notification
 from django.core.mail import send_mail
+from .forms import ProfileForm, UserForm
+from .models import Profile
 from .forms import AppointmentForm, UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -70,9 +72,34 @@ def register(request):
         form = UserRegistrationForm()
     return render(request, 'registration/register.html', {'form': form})
 
+
 @login_required
-def profile(request):
-    return render(request, 'profile.html')
+def profile_view(request):
+    user = request.user
+    profile, created = Profile.objects.get_or_create(user=user)
+
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=user)
+        profile_form = ProfileForm(request.POST, instance=profile)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('profile')  # Reload profile page
+
+    else:
+        user_form = UserForm(instance=user)
+        profile_form = ProfileForm(instance=profile)
+
+    # Fix: Replace status with completed
+    completed_appointments = Appointment.objects.filter(user=user, completed=True)
+
+    return render(request, 'myapp/profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+        'completed_appointments': completed_appointments
+    })
+
 
 @login_required
 def user_dashboard(request):
