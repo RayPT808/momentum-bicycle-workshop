@@ -10,7 +10,7 @@ load_dotenv()  # Load environment variables from .env
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "default-insecure-key")
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "momentum-bicycle-workshop-22fb69372d3e.herokuapp.com",
@@ -24,6 +24,7 @@ ALLOWED_HOSTS = [
     "8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io",
     "8080-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io",
     "8000-raypt808-momentumbicycl-9m2enmotpf7.ws-eu118.gitpod.io",
+    "8000-raypt808-momentumbicycl-ziz20zznbiv.ws-eu118.gitpod.io",
 ]
 
 
@@ -36,6 +37,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://8000-raypt808-momentumbicycl-7y8dk9my9ip.ws-eu118.gitpod.io",
     "https://8000-raypt808-momentumbicycl-plilexjoq34.ws-eu118.gitpod.io",
     "https://8000-raypt808-momentumbicycl-9m2enmotpf7.ws-eu118.gitpod.io",
+    "https://8000-raypt808-momentumbicycl-ziz20zznbiv.ws-eu118.gitpod.io",
 ]
 
 

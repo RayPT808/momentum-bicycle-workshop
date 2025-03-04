@@ -1,5 +1,11 @@
-{% extends "myapp/base.html" %} {% load static %} {% block title %}Contact{%
-endblock %} {% block body_class %}contact-page{% endblock %} {% block content %}
+{% extends "myapp/base.html" %}
+{% load static %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body_class %}contact-page{% endblock %}
+
+{% block content %}
 <div class="contact-container">
   <h1>Contact Us</h1>
 
@@ -15,12 +21,7 @@ endblock %} {% block body_class %}contact-page{% endblock %} {% block content %}
     </div>
 
     <div class="download-link">
-      <a
-        href="{% static 'myapp/pdfs/price_list.pdf' %}"
-        class="btn btn-transparent"
-        download
-        >Download Price List</a
-      >
+      <a href="{% static 'myapp/pdfs/price_list.pdf' %}" class="btn btn-transparent" download>Download Price List</a>
     </div>
   </div>
 </div>
