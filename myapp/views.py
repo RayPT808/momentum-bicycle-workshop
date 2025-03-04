@@ -185,6 +185,9 @@ def book_appointment(request):
 @login_required
 def appointment_list(request):
     appointments = Appointment.objects.filter(user=request.user).order_by("date")
+
+    print(list(appointments.values("id", "description")))
+
     return render(
         request, "myapp/appointment_list.html", {"appointments": appointments}
     )
