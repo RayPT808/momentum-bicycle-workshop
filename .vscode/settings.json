@@ -15,4 +15,10 @@
    "files.autoSave": "off",
    "workbench.colorTheme": "Default High Contrast Light",
    "terminal.integrated.gpuAcceleration": "canvas",
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black"
 }
+
+
+
+

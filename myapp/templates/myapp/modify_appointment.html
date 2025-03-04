@@ -1,24 +1,27 @@
 <!-- modify_appointment.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modify Appointment</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
     {% include 'myapp/navbar.html' %}
     <div class="container mt-5">
-        <h2>Modify Appointment</h2>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group">
-                {{ form.as_p }}
-            </div>
-            <button type="submit" class="btn btn-primary">Save Changes</button>
-            <a href="{% url 'appointment_list' %}" class="btn btn-secondary">Cancel</a>
-        </form>
+      <h2>Modify Appointment</h2>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">{{ form.as_p }}</div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'appointment_list' %}" class="btn btn-secondary"
+          >Cancel</a
+        >
+      </form>
     </div>
-</body>
+  </body>
 </html>

@@ -1,54 +1,66 @@
-{% extends "myapp/base.html" %}
-
-{% block title %}Owner Dashboard{% endblock %}
-
+{% extends "myapp/base.html" %} {% block title %}Owner Dashboard{% endblock %}
 {% block content %}
 <h2>Booked Appointments</h2>
 
 <form method="GET" action="{% url 'owner_dashboard' %}">
-    <input type="text" name="search" placeholder="Search notes...">
-    <input type="date" name="date">
-    <button type="submit">Filter</button>
+  <input type="text" name="search" placeholder="Search notes..." />
+  <input type="date" name="date" />
+  <button type="submit">Filter</button>
 </form>
 
 <a href="{% url 'export_appointments' %}" class="btn btn-primary">Export</a>
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Notes</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for appointment in appointments %}
-        <tr>
-            <td>{{ appointment.date }}</td>
-            <td>{{ appointment.description }}</td> <!-- Ensure correct field name for 'notes' -->
-            <td>
-                <!-- Show completed status for debugging -->
-                <span>{{ appointment.completed }}</span>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Notes</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for appointment in appointments %}
+    <tr>
+      <td>{{ appointment.date }}</td>
+      <td>{{ appointment.description }}</td>
+      <!-- Ensure correct field name for 'notes' -->
+      <td>
+        <!-- Show completed status for debugging -->
+        <span>{{ appointment.completed }}</span>
 
-                <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-warning">Edit</a>
-                <form method="POST" action="{% url 'delete_appointment' appointment.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
+        <a
+          href="{% url 'edit_appointment' appointment.id %}"
+          class="btn btn-warning"
+          >Edit</a
+        >
+        <form
+          method="POST"
+          action="{% url 'delete_appointment' appointment.id %}"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
 
-                {% if not appointment.completed %}
-                <!-- Button to mark appointment as completed -->
-                <form method="POST" action="{% url 'mark_completed' appointment.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-success">Mark as Completed</button>
-                </form>
-                {% else %}
-                <span>Completed</span>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
+        {% if not appointment.completed %}
+        <!-- Button to mark appointment as completed -->
+        <form
+          method="POST"
+          action="{% url 'mark_completed' appointment.id %}"
+          style="display: inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn btn-success">
+            Mark as Completed
+          </button>
+        </form>
+        {% else %}
+        <span>Completed</span>
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
 {% endblock %}

@@ -1,28 +1,27 @@
-{% extends "myapp/base.html" %}
-{% load static %}
-
-{% block title %}Contact{% endblock %}
-
-{% block body_class %}contact-page{% endblock %}
-
-{% block content %}
+{% extends "myapp/base.html" %} {% load static %} {% block title %}Contact{%
+endblock %} {% block body_class %}contact-page{% endblock %} {% block content %}
 <div class="contact-container">
-    <h1>Contact Us</h1>
+  <h1>Contact Us</h1>
 
-    <div class="contact-details">
-        <div class="address">
-            <h5>Address</h5>
-            <p>808 Velodrome Street<br>Pedal City, ST 890</p>
-        </div>
-
-        <div class="contact-info">
-            <h5>Contact Details</h5>
-            <p>Email: info@momentumbike.com<br>Phone: (123) 456-7890</p>
-        </div>
-        
-        <div class="download-link">
-            <a href="{% static 'myapp/pdfs/price_list.pdf' %}" class="btn btn-transparent" download>Download Price List</a>
-        </div>
+  <div class="contact-details">
+    <div class="address">
+      <h5>Address</h5>
+      <p>808 Velodrome Street<br />Pedal City, ST 890</p>
     </div>
+
+    <div class="contact-info">
+      <h5>Contact Details</h5>
+      <p>Email: info@momentumbike.com<br />Phone: (123) 456-7890</p>
+    </div>
+
+    <div class="download-link">
+      <a
+        href="{% static 'myapp/pdfs/price_list.pdf' %}"
+        class="btn btn-transparent"
+        download
+        >Download Price List</a
+      >
+    </div>
+  </div>
 </div>
 {% endblock %}

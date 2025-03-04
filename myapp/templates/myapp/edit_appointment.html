@@ -1,18 +1,17 @@
 <!-- myapp/templates/myapp/edit_appointment.html -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Appointment</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Edit Appointment</h1>
     <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Appointment</button>
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Update Appointment</button>
     </form>
     <a href="{% url 'appointment_list' %}">Back to Appointment List</a>
-</body>
+  </body>
 </html>

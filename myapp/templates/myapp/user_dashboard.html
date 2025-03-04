@@ -1,23 +1,20 @@
-{% extends 'base.html' %}
-
-{% block title %}User Dashboard{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% block title %}User Dashboard{% endblock %} {% block
+content %}
 <div class="container mt-5">
-    <h2>Your Dashboard</h2>
-    <h3>Notifications</h3>
+  <h2>Your Dashboard</h2>
+  <h3>Notifications</h3>
 
-    {% if notifications %}
-    <ul class="list-group">
-        {% for notification in notifications %}
-        <li class="list-group-item">
-            <strong>{{ notification.message }}</strong><br>
-            <small>Received on: {{ notification.created_at }}</small>
-        </li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No notifications yet.</p>
-    {% endif %}
+  {% if notifications %}
+  <ul class="list-group">
+    {% for notification in notifications %}
+    <li class="list-group-item">
+      <strong>{{ notification.message }}</strong><br />
+      <small>Received on: {{ notification.created_at }}</small>
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No notifications yet.</p>
+  {% endif %}
 </div>
 {% endblock %}

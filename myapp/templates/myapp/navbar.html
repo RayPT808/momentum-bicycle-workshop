@@ -1,30 +1,50 @@
 <!-- navbar.html -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="{% url 'home' %}">Momentum Bicycle Workshop</a> <!-- Logo link -->
-    <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+  <a class="navbar-brand" href="{% url 'home' %}">Momentum Bicycle Workshop</a>
+  <!-- Logo link -->
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+      </li>
 
-            {% if user.is_authenticated %}
-            <li class="nav-itemd-flex align-items-center ml-auto"><a class="nav-link" href="{% url 'book_appointment' %}">Book Appointment</a></li>
-            <!-- Logout form with POST method -->
-            <li class="nav-item d-flex align-items-center ml-auto">
-                <form method="post" action="{% url 'logout' %}" class="d-flex align-items-center">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-link nav-link p-2 m-0 text-decoration-none">Logout</button>
-                </form>
-            </li>
+      {% if user.is_authenticated %}
+      <li class="nav-itemd-flex align-items-center ml-auto">
+        <a class="nav-link" href="{% url 'book_appointment' %}"
+          >Book Appointment</a
+        >
+      </li>
+      <!-- Logout form with POST method -->
+      <li class="nav-item d-flex align-items-center ml-auto">
+        <form
+          method="post"
+          action="{% url 'logout' %}"
+          class="d-flex align-items-center"
+        >
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="btn btn-link nav-link p-2 m-0 text-decoration-none"
+          >
+            Logout
+          </button>
+        </form>
+      </li>
 
-
-
-            {% if user.is_superuser %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'owner_dashboard' %}">Owner Dashboard</a></li>
-            {% endif %}
-
-            {% else %}
-            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-        </ul>
-    </div>
+      {% if user.is_superuser %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'owner_dashboard' %}"
+          >Owner Dashboard</a
+        >
+      </li>
+      {% endif %} {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
 </nav>

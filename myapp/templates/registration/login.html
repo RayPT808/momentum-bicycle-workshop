@@ -1,45 +1,55 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="icon" href="/static/favicon-16x16.png" type="image/x-icon">
-    <link rel="icon" href="/static/favicon-32x32.png" type="image/x-icon">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="icon" href="/static/favicon-16x16.png" type="image/x-icon" />
+    <link rel="icon" href="/static/favicon-32x32.png" type="image/x-icon" />
     <!-- Background Image CSS -->
     <style>
-        body {
-            background-image: url("{% static 'images/about-background.jpg' %}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+      body {
+        background-image: url("{% static 'images/about-background.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- Navigation Bar -->
     {% include 'myapp/navbar.html' %}
 
     <div class="container mt-5">
-        <h2>Login</h2>
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.as_p }} <!-- Render the form fields -->
-            <button type="submit" class="btn btn-primary">Login</button> <!-- Styled button -->
-        </form>
+      <h2>Login</h2>
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <!-- Render the form fields -->
+        <button type="submit" class="btn btn-primary">Login</button>
+        <!-- Styled button -->
+      </form>
     </div>
 
     <!-- Bootstrap JS (optional) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" defer></script>
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"
+      defer
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      defer
+    ></script>
+  </body>
 </html>
