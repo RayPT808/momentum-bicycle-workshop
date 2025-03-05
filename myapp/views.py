@@ -17,6 +17,10 @@ from django.utils.timezone import now
 import csv
 import logging
 from django.template.loader import get_template
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from django.views import View
+
 
 
 def some_view(request):
@@ -27,7 +31,7 @@ logger = logging.getLogger(__name__)
 
 
 class CustomLogoutView(View):
-    def post(self, request):
+    def get(self, request):  # Ensure GET is allowed
         logout(request)
         return redirect("home")
 

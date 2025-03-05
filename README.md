@@ -89,13 +89,13 @@ The database is structured using Django’s ORM, which maps Python classes to da
 
 **Key Entities:**
 - User – Represents customers and shop owners.
-- Appointment – Stores booking details (date, time, service type, status).
+- Appointment – Stores booking details (date, time, service description, status).
 - Service – Different types of repair services offered.
 - Workshop Owner – Special permissions to manage appointments
 
 **Relationships:**
 
-- A User can book multiple Appointments (One-to-Many).
+- A User can book one Appointment at the time (One-to-One).
 - Each Appointment is linked to a specific Service (Many-to-One).
 - A Workshop Owner can manage multiple Appointments.
 - The Django authentication system handles user authentication and permissions.
@@ -143,7 +143,16 @@ This relational structure ensures data integrity, prevents duplicate bookings, a
 ---
 ##  Testing  
 
-I used a **test-as-you-go approach**, ensuring each change worked correctly before moving forward.  
+I used a **test-as-you-go approach**, ensuring each change worked correctly before moving forward. 
+
+**Manual Testing**
+
+
+Tested each user journey from start to finish.
+Validated form inputs with valid/invalid data.
+Checked authentication and authorization flows.
+Ensured responsiveness across different browsers and devices.
+
 
 ### **Testing Checklist:**  
  End-to-end testing for all user journeys.  

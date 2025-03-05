@@ -54,6 +54,10 @@ class RegistrationTest(TestCase):
 
 
 # Test for logout function
+from django.test import TestCase
+from django.urls import reverse
+from django.contrib.auth.models import User
+
 class LogoutTest(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(
@@ -63,9 +67,9 @@ class LogoutTest(TestCase):
     def test_logout_success(self):
         self.client.login(username="testuser", password="TestPassword123!")
 
-        response = self.client.get(reverse("logout"))
+        response = self.client.post(reverse("logout"))  # Changed from GET to POST
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)  # Expecting redirect
 
         response_after_logout = self.client.get(reverse("home"))
         self.assertNotIn("_auth_user_id", self.client.session)
