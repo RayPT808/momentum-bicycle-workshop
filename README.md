@@ -57,8 +57,6 @@ Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:
 
 ---
 
-
-
 ##  Technologies Used  
 
 ### **Languages**  
@@ -80,9 +78,30 @@ Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:
 The web app follows **CRUD (Create, Read, Update, Delete) operations**, ensuring smooth appointment management.  
 
 ### **Authentication & Validation**  
-✔️ Secure login for **customers**, **shop owners**, and **admin users**.  
-✔️ Restriction of **appointment bookings** to available dates/times.  
-✔️ Validation for **cancellation policies** to prevent misuse.  
+ Secure login for **customers**, **shop owners**, and **admin users**.  
+ Restriction of **appointment bookings** to available dates/times.  
+ Validation for **cancellation policies** to prevent misuse.  
+
+**ERD**
+![Navigation bar](documentation/screenshots/erd.png)
+
+The database is structured using Django’s ORM, which maps Python classes to database tables.
+
+**Key Entities:**
+- User – Represents customers and shop owners.
+- Appointment – Stores booking details (date, time, service type, status).
+- Service – Different types of repair services offered.
+- Workshop Owner – Special permissions to manage appointments
+
+**Relationships:**
+
+- A User can book multiple Appointments (One-to-Many).
+- Each Appointment is linked to a specific Service (Many-to-One).
+- A Workshop Owner can manage multiple Appointments.
+- The Django authentication system handles user authentication and permissions.
+
+This relational structure ensures data integrity, prevents duplicate bookings, and allows efficient scheduling.
+
 
 ---
 
@@ -116,10 +135,10 @@ The web app follows **CRUD (Create, Read, Update, Delete) operations**, ensuring
 ##  Future Enhancements  
 
  Planned features for future releases:  
-✔️ **Calendar-based booking system** (Instead of dropdown lists).  
-✔️ **Job prioritization for shop owners** (e.g., "In Progress" → "Completed").  
-✔️ **Interactive Map** (For shop location).  
-✔️ **Forgotten password recovery system**.  
+ **Calendar-based booking system** (Instead of dropdown lists).  
+ **Job prioritization for shop owners** (e.g., "In Progress" → "Completed").  
+ **Interactive Map** (For shop location).  
+ **Forgotten password recovery system**.  
 
 ---
 ##  Testing  
@@ -127,14 +146,14 @@ The web app follows **CRUD (Create, Read, Update, Delete) operations**, ensuring
 I used a **test-as-you-go approach**, ensuring each change worked correctly before moving forward.  
 
 ### **Testing Checklist:**  
-✔️ End-to-end testing for all user journeys.  
-✔️ Validation of all form inputs (empty fields, incorrect values).  
-✔️ Browser compatibility testing on **Chrome, Safari, and Firefox**.  
+ End-to-end testing for all user journeys.  
+ Validation of all form inputs (empty fields, incorrect values).  
+ Browser compatibility testing on **Chrome, Safari, and Firefox**.  
 
 ### **Validation Results:**  
-✔️ **HTML Validation**   
-✔️ **CSS Validation**  
-✔️ **Functionality Testing**  
+ **HTML Validation**   
+ **CSS Validation**  
+ **Functionality Testing**  
 
 ---
 
