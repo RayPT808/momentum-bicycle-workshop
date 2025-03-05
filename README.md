@@ -1,14 +1,13 @@
-# Momentum Bicycle Workshop
+# Momentum Bicycle Workshop  
+![Momentum](documentation/screenshots/momentum.png)  
 
-The Momentum Bicycle Workshop website is an imaginery workshop for anyone who needs some sort of service to be carried out on their bicycle.
-As one would say this would be your local bike shop. It's not a frnachise or a big multi corporation, Momentum Bicycle Workshop is a small independent
-business, that was openened with the aim to help out anyone who is having troubles with the bicycle. The main driving force behind the business is
-the passion for cycling, promoting a healthier way of locomotion and the social aspects of cycling.
-'Momentum Bicycle Workshop' is a web application designed to streamline bicycle repair bookings, manage appointments, and provide a seamless experience for customers and workshop owners.
+Momentum Bicycle Workshop is a web application designed to streamline bicycle repair bookings, manage appointments, and provide a seamless experience for customers and workshop owners.  
 
-![Momentum](documentation/screenshots/momentum.png)
+This project is my fourth milestone project for the **Code Institute Full Stack Developer course**.  
 
-To visit the deployed version of Momentum Bicycle Workshop [click here](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/contact/).
+🚀 **Live Demo**: [Click here](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/contact/) to visit the deployed version.  
+
+---
 
 ## Purpose 
 The objective of this app/ website is to provide the user with a guidence and service regarding bicycle issues.
