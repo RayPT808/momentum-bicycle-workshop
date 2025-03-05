@@ -5,241 +5,187 @@ Momentum Bicycle Workshop is a web application designed to streamline bicycle re
 
 This project is my fourth milestone project for the **Code Institute Full Stack Developer course**.  
 
-🚀 **Live Demo**: [Click here](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/contact/) to visit the deployed version.  
+ **Live Demo**: [Click here](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/contact/) to visit the deployed version.  
 
 ---
 
-## Purpose 
-The objective of this app/ website is to provide the user with a guidence and service regarding bicycle issues.
-This project is my fourth milestone project of my Code Institute Full Stack Developer course.
+##  Purpose  
 
-## Requirement Gathering and Planning
+Momentum Bicycle Workshop is an independent, small-scale bicycle repair business. Unlike large franchises, it focuses on **personalized service**, **community engagement**, and **a passion for cycling**.  
 
-Before starting the coding for this project, I took the time to think about how to set up the architecture of this app, the layout of the output on the frontend and the functionality required to provide a good user experience. 
-To get some inspiration I did look around if there are any similar business and if so how does their website look like? (based on my location)
+The website serves as a **digital hub** where users can:  
+- Schedule repair appointments.  
+- Manage their bookings.  
+- Contact the shop for inquiries.  
+- Stay informed about services and pricing.  
 
-(https://bicycle-workshop.de/about)
+---
+##  Requirement Gathering & Planning  
 
-(https://velovezh.ch/)
+Before developing this project, I analyzed existing bicycle repair websites to identify common patterns and market gaps. Some references included:  
+- [Bicycle Workshop](https://bicycle-workshop.de/about)  
+- [Velovezh](https://velovezh.ch/)  
+- [Imboden Bike](https://www.imboden-bike.ch/en/workshop)  
+- [Aureus Drive](https://aureusdrive.ch/en/about-us/blog/)  
 
-(https://www.imboden-bike.ch/en/workshop)
+ **Key Insights:**  
+- Many small bike shops lack an online presence.  
+- Larger businesses have complex, feature-rich websites, but smaller shops need **simple yet effective solutions**.  
+- There’s an opportunity for a **clean, user-friendly booking system** for local workshops.  
 
-(https://aureusdrive.ch/en/about-us/blog/)
+This vision shaped my design and development choices.  
 
-Well, it didn't take to long to notice, there isn't much out there on this market. From these businesses nothing stood out.
-I really like an aesthetically pleasing look of website, regardless of what is the website related to.
-Seems like bigger companies have a well structured, more complex website, with additional e-commerce functionality.
-But I was after the small local shop "feeling", and some of those businesses don't even have a website...so right there is a small
-market gap for simple, but nice websites with few basic functions. 
-Once I realized this, this was/ is my vision throughout the process.
+---
 
+##  Target Audience & User Stories  
 
-## User Demographics, Stories and Needs
+Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:  
+✔️ **Daily commuters** needing quick fixes.  
+✔️ **Students** wanting stylish bike upgrades.  
+✔️ **Seniors** looking for regular maintenance.  
 
-A small, friendly business perhaps could connect with the custumers better, making them returning customer in the long run.
-Momentum Bicycle Workshop is targeting everybody on bikes. From the daily commuters to the weekend leisure riders and even the competitive- sporty riders.
 
-### Target Demographic
+### **User Stories**  
 
-This website is useful for anyone wanting to have a fast and reliable repair work done on his/ her bicycle.
+| As a user, I want to... | So that I can... |  
+|----------------------|----------------|  
+| Find a nearby bike shop | Plan my visit easily |  
+| View service pricing | Make an informed decision |  
+| Contact the workshop | Ask specific questions |  
+| Register on the website | Schedule an appointment |  
+| Modify or cancel appointments | Adjust plans if needed |  
 
- Some examples of such users are: 
+---
 
-- The teenager who rides bike daily to school and has a puncture.
-- The hipster university student who will head for beers with his friends, but he would like to show off his new pedals. 
-- The pensioner grandma who rides her bike once a week to the market, but it's been a while now since that bike had a full maintenance job.
 
-### User Stories
 
-|As website user for a service, I want to... | So that... |
-|--------|--------|
-| ...be able to find a bike shop online, that is nearby. | ...I can plan my visit to the workshop. |
-| ...get information on the prices of the services. | ...I can make and informed decision on what service I need.|
-| ...be able to call or email the workshop. | ...I can have specific questions with regards to the services. |
-| ...be able to register on the shop's system. | ...I can schedule an appointment for bike repairs. |
-| ...to be able to modify or delete my existing appointments. | ...in case for some reason I cannot make it to the original appointment. |
+##  Technologies Used  
 
-## Technologies Used
+### **Languages**  
+- Python  
+- HTML  
+- CSS  
 
-### Language Used
+### **Frameworks, Libraries & Tools**  
+1. **Django** – Backend framework for handling logic.  
+2. **Bootstrap** – Frontend styling and responsiveness.  
+3. **GitHub** – Version control & repository hosting.  
+4. **GitHub’s Code Editor** – For writing and running the code.  
+5. **Favicon Generator** – For browser tab icons.  
 
-+ Python
-* HTML
-- CSS
+---
 
+##  Data Model  
 
-### Frameworks, Libraries & Programs Used
+The web app follows **CRUD (Create, Read, Update, Delete) operations**, ensuring smooth appointment management.  
 
-1. Code Institue template: 
-+ The foundations are based on Code Institutes Blog project in the study material.
+### **Authentication & Validation**  
+✔️ Secure login for **customers**, **shop owners**, and **admin users**.  
+✔️ Restriction of **appointment bookings** to available dates/times.  
+✔️ Validation for **cancellation policies** to prevent misuse.  
 
-2. Django
+---
 
 
-3. Bootstrap:
+  ##  Features  
 
+1. **Navigation Bar** – Easy access to all pages.  
+   ![Navigation bar](documentation/screenshots/navbar.png)  
 
-4. GitHub
-- Github was used to store the project after being pushed
+2. **Downloadable PDF Price List**  
+   ![PDF price list](documentation/screenshots/pricelist.png)  
 
-5. Code Editor
-- To write and run the code GitHub's Code editor was used.
+3. **User Registration & Login**  
+   ![Registration](documentation/screenshots/registration.png)  
+   ![Login](documentation/screenshots/login.png)  
 
-6. Favicon
+4. **Appointment Booking System**  
+   ![Booking](documentation/screenshots/bookappointment.png)  
 
-### Data Model
+5. **Modify Appointments**  
+   ![Modify Appointment](documentation/screenshots/modifyappointment.png)  
 
-The data model and the use of 'CRUD' operations are central to the functioning of the app. 
+6. **Photo Upload** (For users to share bike issues)  
+   ![Photo Upload](documentation/screenshots/photoupload.png)  
 
-### Authenticatin, Validation
+7. **Django Admin Panel** (For the developer & shop owner)  
+   ![Admin Panel](documentation/screenshots/djangodashboard.png)  
 
+---
 
-1. Authentication of customers at log in 
+##  Future Enhancements  
 
-2. Authentication of 'shop owner' at login
-    
-3. Authentication of 'super user' at website admin log in
+ Planned features for future releases:  
+✔️ **Calendar-based booking system** (Instead of dropdown lists).  
+✔️ **Job prioritization for shop owners** (e.g., "In Progress" → "Completed").  
+✔️ **Interactive Map** (For shop location).  
+✔️ **Forgotten password recovery system**.  
 
-4. Validation of restricted days/ times at appointment booking
+---
+##  Testing  
 
-5. Validation of appointment cancellation
-  
+I used a **test-as-you-go approach**, ensuring each change worked correctly before moving forward.  
 
+### **Testing Checklist:**  
+✔️ End-to-end testing for all user journeys.  
+✔️ Validation of all form inputs (empty fields, incorrect values).  
+✔️ Browser compatibility testing on **Chrome, Safari, and Firefox**.  
 
-#### To be implemented
-- A user friendly calendar view to book appointments instead of the old fashioned scroll down list
+### **Validation Results:**  
+✔️ **HTML Validation**   
+✔️ **CSS Validation**  
+✔️ **Functionality Testing**  
 
-- A system to prioritise jobs for shop owner such as 'in progress' - 'completed'
+---
 
-- 'Where to find us' section with a map of the shop's location
+##  Deployment  
 
-- Contact details for existing appointments on the system
+This project was deployed to **Heroku** and is accessible at:  
+ [Live Site](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/)  
 
-- Forgotten password, password reset
+### **Deployment Steps**  
+1. Create a **Heroku account** and install the CLI.  
+2. Set up a **PostgreSQL database** for production.  
+3. Push the code to **GitHub** and connect it to Heroku.  
+4. Use `gunicorn` as the WSGI server for Django.  
+5. Apply **migrations** and create a **superuser**.  
+6. Deploy and verify all functionalities.  
 
-## Features
+---
 
-1. Navigation bar
+## 👥 User Login Details (For Testing)  
 
-![Navigation bar](documentation/screenshots/navbar.png)
+### **Customer**  
+- Username: `blackjack`  
+- Password: `training2024`  
 
-2. Link to PDF price list
+### **Shop Owner**  
+- Username: `shopowner2024`  
+- Password: `fixthebike`  
 
-![PDF price list to download](documentation/screenshots/pricelist.png)
+### **Django Admin**  
+- Username: `shopowner2024`  
+- Password: `fixthebike`  
 
-3. Registration
+ [Admin Panel](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/admin/myapp/appointment/)  
 
-![New user registration](documentation/screenshots/registration.png)
+---
 
-4. Log In page - for user and owner
 
-![Log in](documentation/screenshots/login.png)
+##  Credits  
 
-5. Appointment - schedule for user and owner
+### **APIs & Libraries**  
+- **Django Documentation** – For authentication setup.  
+- **Bootstrap Docs** – For styling and UI components.  
 
-![Appointment schedule](documentation/screenshots/bookappointment.png)
+### **Project Management**  
+- Used **GitHub’s Kanban Board** for task organization.  
+  ![Kanban Board](documentation/screenshots/kanbanboard.png)  
 
-6. Appointment - modification for user and owner
+### **Acknowledgment**  
+ **Huge thanks to my mentor, Can Sücüllü**, for his valuable guidance, insights, and feedback throughout this project.  
 
-![Modify appointment](documentation/screenshots/modifyappointment.png)
+---
 
-7. Photo upload - for user
-
-![Photo upload option](documentation/screenshots/photoupload.png)
-
-8. Django Admin log in - for developer of the website
-
-![Django admin panel](documentation/screenshots/djangodashboard.png)
-
-
-## User log in details
-
-### Customer
-
-- username: blackjack
-- password: training2024
-
-### Shop Owner
-
-- username: shopowner2024
-- password: fixthebike
-
-### Django Admin
-
-- username: shopowner2024
-- password: fixthebike
-
- Admin link (https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/admin/myapp/appointment/)
-
-
-
-
-## Testing
-
-I took a test-as-you-go approach - testing after each change to ensure that my desired outcome was achieved. 
-
-I also completed an end-to-end test covering these aspects, at milestones throughout the project:
-
-- Test each user journey from start to finish
-- Test going home from every input possible
-- Test every input with invalid inputs, empty inputs and wrong values (where applicable)
-
-
-
-
-
-### Code Validation
-
-- HTML validation
-
-![HTML Code](documentation/screenshots/htmlvalidation.png)
-
-+ CSS validation
-
-![CSS Code](documentation/screenshots/cssvalidation.png)
-
-
-### Browser compatibility
-Tested the application on **Chrome**, **Safari**, **Firefox**.
-Appearance normal, functions working.
-
-### Unfixed Bugs
-
-- Appointment extraction for owner
-
-![Error 505](documentation/screenshots/exporterror.png)
-
-
-
-## Deployment
-
-This project was deployed to [Heroku](https://id.heroku.com/login): a hosting platform and is accessible via the mock terminal displayed on the (https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/). 
-
-
-## Credits
-
-### APIs and Third Party Libraries
-
-- I used Learn Django to help me set up login/logout etc.
-
-+ I also used the documentation of all the elements included in this project: Django, Bootstrap
-
-* I tried to map the project on Git Hub's Kanban Board to visualise the phases
-
-![Kanaban board](documentation/screenshots/kanbanboard.png)
-
-### Sources of Learning
-I referred back to the Blog Post Walkthrough Project set up videos to remind me how to set up the main structure, functions, credentials and files before starting coding.
-
-
-### Acknowledgement 
-Grateful for the help and the input from my mentor **Can Sücüllü**.
-He always gave a different perspective on the issues and with his experience
-and eyes for details I was guided in the right direction to make this project happen.
-
-
-
-
-
-
-
+ **This project was built with passion, problem-solving, and a love for cycling.**  
+ **Happy riding, and keep your bikes in top shape!**  
