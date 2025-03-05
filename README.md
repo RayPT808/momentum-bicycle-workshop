@@ -141,7 +141,24 @@ This relational structure ensures data integrity, prevents duplicate bookings, a
  **Forgotten password recovery system**.  
 
 ---
-##  Testing  
+##  Testing
+
+**Automated Testing**
+
+I implemented automated unit tests using Python's unittest module (or pytest, if used). 
+These tests ensure that key functions work correctly without manual intervention.
+
+    Example of Automated Tests:
+
+- Test Appointment Booking – Ensures users can book appointments with valid inputs.
+- Test Appointment Cancellation – Verifies that only authorized users can cancel an appointment.
+- Test User Authentication – Checks if login/logout functionality works as expected.
+- Test Home page load.
+
+![Tests](documentation/screenshots/tests.png)
+
+
+
 
 I used a **test-as-you-go approach**, ensuring each change worked correctly before moving forward. 
 
