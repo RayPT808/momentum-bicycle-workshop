@@ -112,7 +112,7 @@ This relational structure ensures data integrity, prevents duplicate bookings, a
    ![Navigation bar](documentation/screenshots/navbar.png)  
 
 2. **Downloadable PDF Price List**  
-   ![PDF price list](documentation/screenshots/pricelist.png)  
+   ![PDF price list](documentation/screenshots/pricelisttodownload.png)  
 
 3. **User Registration & Login**  
    ![Registration](documentation/screenshots/registration.png)  
