@@ -135,6 +135,7 @@ This relational structure ensures data integrity, prevents duplicate bookings, a
 ##  Future Enhancements  
 
  Planned features for future releases:
+
  **Improving Lighthouse rating**  
  **Calendar-based booking system** (Instead of dropdown lists).  
  **Job prioritization for shop owners** (e.g., "In Progress" → "Completed").  
@@ -185,9 +186,9 @@ Weirdly early in to the project the scores were consitentley high and the final 
 I ran the lighthouse test on mobile, desktop version in incognito mode, after clearing cache etc. it didn't make
 any difference. The cause and the solutin is still to be investigated.
 
-![Lighthouse1](documentation/screenshots/lighthouse1.png.png)
-![Lighthouse2](documentation/screenshots/lighthouse2.png.png)
-![Lighthouse3](documentation/screenshots/lighthouse3.png.png)
+![lighthouse1](documentation/screenshots/lighthouse1.png.png)
+![lighthouse2](documentation/screenshots/lighthouse2.png.png)
+![lighthouse3](documentation/screenshots/lighthouse3.png.png)
 
 
 
