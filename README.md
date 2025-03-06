@@ -179,12 +179,12 @@ Ensured responsiveness across different browsers and devices.
 
 
 
-**Lighthouse Accesibility testing**
+**Lighthouse Accesibility Testing**
 
 Unfortunately the lighthouse test gave confilcting results in different stages of the project.
 Weirdly early in to the project the scores were consitentley high and the final product is scoring low.
 I ran the lighthouse test on mobile, desktop version in incognito mode, after clearing cache etc. it didn't make
-any difference. The cause and the solutin is still to be investigated.
+any difference. The cause and the solution is still to be investigated.
 
 ![lighthouse1](documentation/screenshots/lighthouse1.png)
 ![lighthouse2](documentation/screenshots/lighthouse2.png)
@@ -198,9 +198,22 @@ any difference. The cause and the solutin is still to be investigated.
  Browser compatibility testing on **Chrome, Safari, and Firefox**.  
 
 ### **Validation Results:**  
- **HTML Validation**   
- **CSS Validation**  
- **Functionality Testing**  
+ **HTML Validation**
+
+ ![html](documentation/screenshots/htmlvalidation2.png)   
+ **CSS Validation**
+
+ ![css](documentation/screenshots/cssvalidation2.png)  
+
+ **Flake8 Validation**  
+
+ The Flake8 validation returned a long list of errors in the code. The list was full of E501 error messages.
+ Majority of the error originates from the code of the libraries as it utrned out.
+
+ ![501](documentation/screenshots/validationerrore501.png)
+
+ There were also errors in the cutom code, those ones have been reformatted, but that process had impact on some of the functions.
+ ![formatting](documentation/screenshots/formatting.png)
 
 ---
 
