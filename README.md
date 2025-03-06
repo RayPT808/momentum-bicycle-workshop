@@ -134,7 +134,8 @@ This relational structure ensures data integrity, prevents duplicate bookings, a
 
 ##  Future Enhancements  
 
- Planned features for future releases:  
+ Planned features for future releases:
+ **Improving Lighthouse rating**  
  **Calendar-based booking system** (Instead of dropdown lists).  
  **Job prioritization for shop owners** (e.g., "In Progress" → "Completed").  
  **Interactive Map** (For shop location).  
@@ -159,16 +160,35 @@ These tests ensure that key functions work correctly without manual intervention
 
 
 
+**Manual Testing**
+
 
 I used a **test-as-you-go approach**, ensuring each change worked correctly before moving forward. 
-
-**Manual Testing**
 
 
 Tested each user journey from start to finish.
 Validated form inputs with valid/invalid data.
 Checked authentication and authorization flows.
 Ensured responsiveness across different browsers and devices.
+
+![Weekend](documentation/screenshots/weekendappointment.png)
+
+
+![Completed](documentation/screenshots/completedappointment.png)
+
+
+
+**Lighthouse Accesibility testing**
+
+Unfortunately the lighthouse test gave confilcting results in different stages of the project.
+Weirdly early in to the project the scores were consitentley high and the final product is scoring low.
+I ran the lighthouse test on mobile, desktop version in incognito mode, after clearing cache etc. it didn't make
+any difference. The cause and the solutin is still to be investigated.
+
+![Lighthouse1](documentation/screenshots/Lighthouse1.png.png)
+![Lighthouse2](documentation/screenshots/Lighthouse2.png.png)
+![Lighthouse3](documentation/screenshots/Lighthouse3.png.png)
+
 
 
 ### **Testing Checklist:**  
