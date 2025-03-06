@@ -186,9 +186,9 @@ Weirdly early in to the project the scores were consitentley high and the final 
 I ran the lighthouse test on mobile, desktop version in incognito mode, after clearing cache etc. it didn't make
 any difference. The cause and the solutin is still to be investigated.
 
-![lighthouse1](documentation/screenshots/lighthouse1.png.)
-![lighthouse2](documentation/screenshots/lighthouse2.png.)
-![lighthouse3](documentation/screenshots/lighthouse3.png.)
+![lighthouse1](documentation/screenshots/lighthouse1.png)
+![lighthouse2](documentation/screenshots/lighthouse2.png)
+![lighthouse3](documentation/screenshots/lighthouse3.png)
 
 
 
