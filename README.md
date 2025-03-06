@@ -57,6 +57,15 @@ Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:
 
 ---
 
+**Miniman, practial layout**
+
+![Home](documentation/screenshots/Home.png)
+
+
+**Easy to use booking platform**
+
+![Booking](documentation/screenshots/Booking.png)
+
 ##  Technologies Used  
 
 ### **Languages**  
@@ -69,7 +78,8 @@ Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:
 2. **Bootstrap** – Frontend styling and responsiveness.  
 3. **GitHub** – Version control & repository hosting.  
 4. **GitHub’s Code Editor** – For writing and running the code.  
-5. **Favicon Generator** – For browser tab icons.  
+5. **Favicon Generator** – For browser tab icons. 
+6. **Balsamiq** - To generate inital design 
 
 ---
 
@@ -196,6 +206,7 @@ any difference. The cause and the solution is still to be investigated.
  End-to-end testing for all user journeys.  
  Validation of all form inputs (empty fields, incorrect values).  
  Browser compatibility testing on **Chrome, Safari, and Firefox**.  
+ 
 
 ### **Validation Results:**  
  **HTML Validation**
@@ -208,11 +219,13 @@ any difference. The cause and the solution is still to be investigated.
  **Flake8 Validation**  
 
  The Flake8 validation returned a long list of errors in the code. The list was full of E501 error messages.
- Majority of the error originates from the code of the libraries as it utrned out.
+ Majority of the error originates from the code of the libraries as it turned out.
 
  ![501](documentation/screenshots/validationerrore501.png)
 
  There were also errors in the cutom code, those ones have been reformatted, but that process had impact on some of the functions.
+
+
  ![formatting](documentation/screenshots/formatting.png)
 
 ---
