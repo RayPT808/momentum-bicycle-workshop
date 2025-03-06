@@ -57,12 +57,12 @@ Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:
 
 ---
 
-**Miniman, practial layout**
+**Minimal, practial layout**
 
 ![Home](documentation/screenshots/Home.png)
 
 
-**Easy to use booking platform**
+**Easy-to-use Booking Platform**
 
 ![Booking](documentation/screenshots/Booking.png)
 
@@ -79,7 +79,7 @@ Momentum Bicycle Workshop is **for anyone who rides a bicycle**, including:
 3. **GitHub** – Version control & repository hosting.  
 4. **GitHub’s Code Editor** – For writing and running the code.  
 5. **Favicon Generator** – For browser tab icons. 
-6. **Balsamiq** - To generate inital design 
+6. **Balsamiq** - For generating inital design 
 
 ---
 
@@ -191,14 +191,11 @@ Ensured responsiveness across different browsers and devices.
 
 **Lighthouse Accesibility Testing**
 
-Unfortunately the lighthouse test gave confilcting results in different stages of the project.
-Weirdly early in to the project the scores were consitentley high and the final product is scoring low.
-I ran the lighthouse test on mobile, desktop version in incognito mode, after clearing cache etc. it didn't make
-any difference. The cause and the solution is still to be investigated.
+Lighthouse test results varied at different stages of the project. Earlier in development, scores were consistently high, but the final product scored lower. Despite testing on different devices, browsers, and clearing cache, the cause remains under investigation.
 
-![lighthouse1](documentation/screenshots/lighthouse1.png)
-![lighthouse2](documentation/screenshots/lighthouse2.png)
-![lighthouse3](documentation/screenshots/lighthouse3.png)
+![Lighthouse1](documentation/screenshots/lighthouse1.png)
+![Lighthouse2](documentation/screenshots/lighthouse2.png)
+![Lighthouse3](documentation/screenshots/lighthouse3.png)
 
 
 
@@ -211,10 +208,10 @@ any difference. The cause and the solution is still to be investigated.
 ### **Validation Results:**  
  **HTML Validation**
 
- ![html](documentation/screenshots/htmlvalidation2.png)   
+ ![Html](documentation/screenshots/htmlvalidation2.png)   
  **CSS Validation**
 
- ![css](documentation/screenshots/cssvalidation2.png)  
+ ![Css](documentation/screenshots/cssvalidation2.png)  
 
  **Flake8 Validation**  
 
@@ -223,10 +220,12 @@ any difference. The cause and the solution is still to be investigated.
 
  ![501](documentation/screenshots/validationerrore501.png)
 
- There were also errors in the cutom code, those ones have been reformatted, but that process had impact on some of the functions.
+ There were also errors in the custom code, those ones have been reformatted (Black), but that process had impact on some of the functions and styles.
+ It seemed to me as the choice is between perfectly formatted code or smooth user experience. 
+ 
 
 
- ![formatting](documentation/screenshots/formatting.png)
+ ![Formatting](documentation/screenshots/formatting.png)
 
 ---
 
@@ -242,6 +241,8 @@ This project was deployed to **Heroku** and is accessible at:
 4. Use `gunicorn` as the WSGI server for Django.  
 5. Apply **migrations** and create a **superuser**.  
 6. Deploy and verify all functionalities.  
+
+![Heroku](documentation/screenshots/heroku.png)
 
 ---
 
