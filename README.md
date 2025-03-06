@@ -281,7 +281,7 @@ DATABASES['default'] = os.getenv('DATABASE_URL')
 - To handle static files, I added Whitenoise for better static file management:
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    # other middleware
+   
 ]
 
 ---
