@@ -280,9 +280,7 @@ DATABASES['default'] = os.getenv('DATABASE_URL')
 
 - To handle static files, I added Whitenoise for better static file management:
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-   
-]
+    'whitenoise.middleware.WhiteNoiseMiddleware',]
 
 ---
  ## Step 6: Install Dependencies
@@ -346,10 +344,13 @@ In the Deploy tab on Heroku, I clicked on Deploy Branch to manually deploy my ap
 ### **APIs & Libraries**  
 - **Django Documentation** – For authentication setup.  
 - **Bootstrap Docs** – For styling and UI components.  
+---
 
 ### **Project Management**  
 - Used **GitHub’s Kanban Board** for task organization.  
-  ![Kanban Board](documentation/screenshots/kanbanboard.png)  
+  ![Kanban Board](documentation/screenshots/kanbanboard.png)
+
+---    
 
 ### **Acknowledgment**  
  **Huge thanks to my mentor, Can Sücüllü**, for his valuable guidance, insights, and feedback throughout this project.  
