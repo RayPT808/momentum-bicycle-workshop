@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Appointment  # Import your models here
+from .models import Appointment  
 
 from django.contrib import admin
 from .models import Appointment

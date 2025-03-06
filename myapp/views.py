@@ -1,24 +1,24 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from myapp.models import Appointment, Notification
-from .forms import ProfileForm, UserForm
-from .models import Profile
-from .forms import AppointmentForm, UserRegistrationForm
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.views import LogoutView
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib import messages
-from django.utils import timezone
-from django.http import JsonResponse, HttpResponse
-from django.views.generic import TemplateView, View  #
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.timezone import now
 import csv
 import logging
+
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import JsonResponse, HttpResponse
 from django.template.loader import get_template
-from django.contrib.auth import logout
-from django.shortcuts import redirect
-from django.views import View
+from django.utils import timezone
+from django.utils.timezone import now
+
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LogoutView
+
+from django.views.generic import TemplateView, View
+
+from myapp.models import Appointment, Notification, Profile
+from .forms import AppointmentForm, UserRegistrationForm, ProfileForm, UserForm
+
 
 
 

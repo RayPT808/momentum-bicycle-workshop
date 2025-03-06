@@ -7,10 +7,10 @@ from myapp.views import CustomLogoutView, OwnerDashboardView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("myapp.urls")),  # Include app-level URLs
+    path("", include("myapp.urls")), 
     path(
         "owner/dashboard/", OwnerDashboardView.as_view(), name="owner_dashboard"
-    ),  # Use the class-based view here
+    ), 
     path("owner/export/", views.export_appointments, name="export_appointments"),
     path("owner/edit/<int:id>/", views.edit_appointment, name="edit_appointment"),
     path("owner/delete/<int:id>/", views.delete_appointment, name="delete_appointment"),

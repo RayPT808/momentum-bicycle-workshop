@@ -6,9 +6,9 @@ class MyappConfig(AppConfig):
     name = "myapp"
 
 
-class AccountsConfig(AppConfig):  # Change this name if your app is different
+class AccountsConfig(AppConfig): 
     default_auto_field = "django.db.models.BigAutoField"
-    name = "accounts"  # Change 'accounts' to your actual app name
+    name = "accounts"  
 
     def ready(self):
-        import accounts.signals  # Import the signals module
+        import accounts.signals 

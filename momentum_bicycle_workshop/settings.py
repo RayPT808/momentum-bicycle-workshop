@@ -10,7 +10,7 @@ load_dotenv()  # Load environment variables from .env
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "default-insecure-key")
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "momentum-bicycle-workshop-22fb69372d3e.herokuapp.com",
@@ -44,7 +44,6 @@ CSRF_TRUSTED_ORIGINS = [
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -143,7 +142,7 @@ MESSAGE_TAGS = {
     messages.INFO: "info",
     messages.SUCCESS: "success",
     messages.WARNING: "warning",
-    messages.ERROR: "danger",  # Match this to Bootstrap's "alert-danger" class
+    messages.ERROR: "danger",  
 }
 
 X_FRAME_OPTIONS = "ALLOWALL"

@@ -228,19 +228,92 @@ Lighthouse test results varied at different stages of the project. Earlier in de
  ![Formatting](documentation/screenshots/formatting.png)
 
 ---
+ 
 
-##  Deployment  
+ # Deployment to Heroku
 
-This project was deployed to **Heroku** and is accessible at:  
+ This project was deployed to **Heroku** and is accessible at:  
  [Live Site](https://momentum-bicycle-workshop-22fb69372d3e.herokuapp.com/)  
 
-### **Deployment Steps**  
-1. Create a **Heroku account** and install the CLI.  
-2. Set up a **PostgreSQL database** for production.  
-3. Push the code to **GitHub** and connect it to Heroku.  
-4. Use `gunicorn` as the WSGI server for Django.  
-5. Apply **migrations** and create a **superuser**.  
-6. Deploy and verify all functionalities.  
+I took the following steps to deploy this Django project to Heroku, a popular cloud hosting platform. 
+
+---
+
+## Step 1: Create a PostgreSQL Database
+1. **Create a PostgreSQL database** using your preferred provider. Since I'm a student at Code Institute, I used their PostgreSQL offering.
+2. After creating the database, I made sure to note down the database URL, as I’ll need it later.
+
+---
+
+## Step 2: Create a New Heroku App
+1. I went to [Heroku](https://www.heroku.com) and created a new app by clicking on the "New" button.
+2. I chose a unique name for my app and selected the region closest to my location.
+
+---
+
+## Step 3: Configure the Database
+1. In the **Settings** tab of my new Heroku app, I went to **CONFIG VARS**.
+2. I added a new key-value pair:
+   - **Key:** `DATABASE_URL`
+   - **Value:** I pasted the database URL that I obtained from my PostgreSQL provider.
+
+This allowed my Django app to connect to the Heroku database.
+
+---
+
+## Step 4: Connect GitHub Repository to Heroku
+1. I cloned my repository from GitHub to my local machine.
+2. In the **Deploy** tab of my Heroku app, I linked the Heroku app to my GitHub repository.
+3. I selected my repository but I kept the 'manual' deployment option over the automatic deployment.
+
+---
+## Step 5: Configure Django Settings
+
+I opened `settings.py` and made the following updates:
+- I set `DEBUG = False` to ensure the app runs in production mode.
+- I updated `ALLOWED_HOSTS` to include my Heroku app’s domain:
+  ALLOWED_HOSTS = ['yourappname.herokuapp.com']
+- I used os.environ.get() to access the environment variables I set in Heroku's Config Vars.
+
+- I configured Django to use my PostgreSQL database by setting:
+DATABASES['default'] = os.getenv('DATABASE_URL')
+
+- To handle static files, I added Whitenoise for better static file management:
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # other middleware
+]
+
+---
+ ## Step 6: Install Dependencies
+I made sure all dependencies were installed by running:
+pip install -r requirements.txt
+
+---
+
+## Step 7: Collect Static Files
+I collected the static files in my project to prepare them for Heroku by running:
+python manage.py collectstatic
+
+---
+
+## Step 8: Add the Python Buildpack on Heroku
+In the Settings tab on Heroku, I scrolled down to Buildpacks and added the Python buildpack.
+
+---
+
+## Step 9: Run Database Migrations
+I applied the database migrations to set up my PostgreSQL database by running:
+python manage.py migrate
+
+---
+## Step 10: Create a Superuser
+I created a Django superuser to access the admin interface by running:
+python manage.py createsuperuser
+
+---
+## Step 11: Deploy the App
+In the Deploy tab on Heroku, I clicked on Deploy Branch to manually deploy my app.
 
 ![Heroku](documentation/screenshots/heroku.png)
 
@@ -250,7 +323,10 @@ This project was deployed to **Heroku** and is accessible at:
 
 ### **Customer**  
 - Username: `blackjack`  
-- Password: `training2024`  
+- Password: `training2024` 
+
+- Username: `speed02`
+- Password: `Saturday22`
 
 ### **Shop Owner**  
 - Username: `shopowner2024`  

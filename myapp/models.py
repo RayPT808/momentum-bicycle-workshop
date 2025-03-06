@@ -52,4 +52,4 @@ class Appointment(models.Model):
         unique_together = (
             "user",
             "date",
-        )  # or ('user', 'date', 'time') if you want to prevent double booking at the same time
+        )  
