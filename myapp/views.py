@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from myapp.models import Appointment, Notification
-from django.core.mail import send_mail
 from .forms import ProfileForm, UserForm
 from .models import Profile
 from .forms import AppointmentForm, UserRegistrationForm
@@ -100,7 +99,7 @@ def profile_view(request):
         user_form = UserForm(instance=user)
         profile_form = ProfileForm(instance=profile)
 
-    # Fix: Replace status with completed
+    
     completed_appointments = Appointment.objects.filter(user=user, completed=True)
 
     return render(
@@ -117,7 +116,7 @@ def profile_view(request):
 
 @login_required
 def user_dashboard(request):
-    # Get the notifications for the logged-in user
+
     notifications = Notification.objects.filter(user=request.user).order_by(
         "-created_at"
     )
@@ -303,13 +302,13 @@ def export_appointments(request):
     response["Content-Disposition"] = 'attachment; filename="appointments.csv"'
     writer = csv.writer(response)
 
-    # Update column headers based on the actual fields in the model
+
     writer.writerow(
         ["User", "Date", "Time", "Description", "Photo"]
-    )  # Column headers to reflect available fields
+    )  
 
     for appointment in appointments:
-        # Write the available fields (remove the `notes` field)
+        
         writer.writerow(
             [
                 appointment.user.username,  # User

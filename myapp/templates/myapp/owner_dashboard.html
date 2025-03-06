@@ -1,4 +1,5 @@
-{% extends "myapp/base.html" %} {% block title %}Owner Dashboard{% endblock %}
+{% extends "myapp/base.html" %}
+{% block title %}Owner Dashboard{% endblock %}
 {% block content %}
 <h2>Booked Appointments</h2>
 
@@ -26,29 +27,17 @@
       <!-- Ensure correct field name for 'notes' -->
       <td>
         <!-- Show completed status for debugging -->
-        <span>{{ appointment.completed }}</span>
+        <span></span>
 
-        <a
-          href="{% url 'edit_appointment' appointment.id %}"
-          class="btn btn-warning"
-          >Edit</a
-        >
-        <form
-          method="POST"
-          action="{% url 'delete_appointment' appointment.id %}"
-          style="display: inline"
-        >
+        <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-warning">Edit</a>
+        <form method="POST" action="{% url 'delete_appointment' appointment.id %}" style="display: inline">
           {% csrf_token %}
           <button type="submit" class="btn btn-danger">Delete</button>
         </form>
 
         {% if not appointment.completed %}
         <!-- Button to mark appointment as completed -->
-        <form
-          method="POST"
-          action="{% url 'mark_completed' appointment.id %}"
-          style="display: inline"
-        >
+        <form method="POST" action="{% url 'mark_completed' appointment.id %}" style="display: inline">
           {% csrf_token %}
           <button type="submit" class="btn btn-success">
             Mark as Completed
